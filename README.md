@@ -17,8 +17,11 @@ curl -fsSL https://github.com/teliti-dev/telepati-release/releases/latest/downlo
 Then run the installer:
 
 ```bash
-sudo telepati install bare
+sudo telepati install bare      # server Ubuntu/Debian
+telepati install docker         # Docker Compose
 ```
+
+Butuh license key? Kunjungi [telepati.id/beta](https://telepati.id/beta)
 
 ## Artifacts
 
@@ -26,14 +29,19 @@ Each release contains:
 
 | File | Description |
 |---|---|
-| `telepati_linux_amd64.tar.gz` | Linux x86_64 binary |
-| `telepati_linux_arm64.tar.gz` | Linux ARM64 binary |
-| `telepati_darwin_arm64.tar.gz` | macOS Apple Silicon binary |
-| `telepati_windows_amd64.zip` | Windows x86_64 binary |
-| `*.sha256` | Checksum files |
-| `checksums.txt` | All checksums |
+| `telepati_{version}_linux_amd64.tar.gz` | CLI binary — Linux x86_64 |
+| `telepati_{version}_linux_arm64.tar.gz` | CLI binary — Linux ARM64 |
+| `server_{version}_linux_amd64.tar.gz` | Server binary — Linux x86_64 |
+| `server_{version}_linux_arm64.tar.gz` | Server binary — Linux ARM64 |
+| `checksums.txt` | SHA256 checksums for all artifacts |
+| `install.sh` | One-liner installer script |
 
-Frontend builds are released separately as `telepati_frontend_vX.X.X.tar.gz`.
+## Docker
+
+```bash
+docker pull teliti/telepati:{version}
+docker pull teliti/telepati:latest
+```
 
 ## Documentation
 
