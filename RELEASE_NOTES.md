@@ -1,8 +1,10 @@
 ## Apa yang Baru
 
-- Docker install wizard — wizard interaktif untuk setup via Docker Compose (proxy mode, database, SMTP)
-- Bare install wizard — setup langsung di server Ubuntu/Debian sebagai systemd service
-- License key validation — Ed25519 offline signed key, diverifikasi saat instalasi
+- Docker install wizard — proxy mode (direct IP, Caddy+domain, Cloudflare Tunnel), database (managed/external), admin credentials, SMTP opsional
+- Bare install wizard — setup langsung di server Ubuntu/Debian sebagai systemd service via `sudo telepati install bare`
+- Ed25519 offline license key validation — license key terenkripsi, diverifikasi saat instalasi tanpa butuh koneksi internet
+- `install.sh` — one-liner installer untuk Linux amd64/arm64
+- CI/CD release pipeline — GoReleaser + Docker Hub multi-arch (amd64/arm64)
 
 ## Breaking Changes
 
@@ -22,9 +24,7 @@ Butuh license key? Kunjungi [telepati.id/beta](https://telepati.id/beta)
 
 ## Upgrade dari versi sebelumnya
 
-```bash
-telepati upgrade
-```
+Ini adalah release pertama — tidak ada upgrade path.
 
 ---
 
