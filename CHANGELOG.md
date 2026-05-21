@@ -9,12 +9,28 @@ Versi menggunakan zero-padded semver: `v01.02.001` ≡ `v1.2.1`.
 
 ## [Unreleased]
 
+_(tambahkan perubahan di sini saat develop, sebelum release)_
+
 ### Added
-- Docker install wizard — proxy mode, database, admin credentials, SMTP
-- Bare (Ubuntu/Debian) install wizard via `telepati install bare`
-- Ed25519 offline license key validation
-- `install.sh` — installer script untuk Linux amd64/arm64
+
+### Fixed
+
+### Changed
+
+### Removed
 
 ---
 
-_Belum ada stable release. Release pertama akan menjadi `v00.01.000`._
+## [v00.01.000] — 2026-05-21
+
+### Added
+- Docker install wizard — proxy mode (direct IP, Caddy+domain, Cloudflare Tunnel), database (managed/external), admin credentials, SMTP opsional
+- Bare install wizard — setup langsung di server Ubuntu/Debian sebagai systemd service via `sudo telepati install bare`
+- Ed25519 offline license key validation — license key terenkripsi, diverifikasi saat instalasi tanpa butuh koneksi internet
+- `install.sh` — one-liner installer untuk Linux amd64/arm64
+- CI/CD release pipeline — GoReleaser + Docker Hub multi-arch (amd64/arm64)
+
+---
+
+[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v00.01.000...HEAD
+[v00.01.000]: https://github.com/teliti-dev/telepati-release/releases/tag/v00.01.000
