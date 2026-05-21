@@ -3,7 +3,7 @@
 Semua perubahan notable pada Telepati didokumentasikan di sini.
 
 Format mengikuti [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
-Versi menggunakan zero-padded semver: `v01.02.001` ≡ `v1.2.1`.
+Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR.PATCH`.
 
 ---
 
@@ -21,7 +21,7 @@ _(tambahkan perubahan di sini saat develop, sebelum release)_
 
 ---
 
-## [v00.01.000] — 2026-05-21
+## [v0.1.0] — 2026-05-21
 
 ### Added
 - Docker install wizard — proxy mode (direct IP, Caddy+domain, Cloudflare Tunnel), database (managed/external), admin credentials, SMTP opsional
@@ -32,5 +32,5 @@ _(tambahkan perubahan di sini saat develop, sebelum release)_
 
 ---
 
-[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v00.01.000...HEAD
-[v00.01.000]: https://github.com/teliti-dev/telepati-release/releases/tag/v00.01.000
+[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0...HEAD
+[v0.1.0]: https://github.com/teliti-dev/telepati-release/releases/tag/v0.1.0
