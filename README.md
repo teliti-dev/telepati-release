@@ -2,8 +2,6 @@
 
 Binary releases for the [Telepati ISP Dashboard](https://telepati.id).
 
-> This repository contains only release artifacts — no source code. Source code is in the private `teeliti/telepati` repository.
-
 ## Install
 
 ```bash
