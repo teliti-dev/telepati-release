@@ -9,8 +9,6 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ## [Unreleased]
 
-_(tambahkan perubahan di sini saat develop, sebelum release)_
-
 ### Added
 
 ### Fixed
@@ -18,6 +16,29 @@ _(tambahkan perubahan di sini saat develop, sebelum release)_
 ### Changed
 
 ### Removed
+
+---
+
+## [v0.2.0] — 2026-05-26
+
+### Added
+- License system tiers — feature gates (`RequireFeature`), resource limits (`CheckLimit`), expiry read-only mode (`EnforceExpiry`), quota endpoint `/license/quota`
+- License CLI commands — `telepati license set <key>`, `status`, `deactivate`, `refresh` dengan output tier + expiry + fitur aktif
+- Online license validation — heartbeat ke `license.telepati.in:8443` setiap 6 jam; CA cert di-pin di binary production
+- Zero-restart auto-rotate — saat license diperpanjang (HTTP 410), server auto-aktivasi kunci baru, simpan ke `/etc/telepati/telepati.conf`, hot-swap `atomic.Pointer` tanpa restart
+- Workspace & member limit checks — middleware `CheckLimit` dan `CheckUserWorkspaceLimit` terpasang di route creation
+- Dashboard SPA served from backend — `GET /*` di Fiber serves embedded `frontend/dist/`; release pipeline frontend otomatis update binary
+- Installer v2 — 9-step wizard, `telepati update apply` + rollback, `telepati manage logs/diagnose`, dry-run mode
+- CLI `docker` subcommand — kelola container telepati-wa dan layanan lain tanpa masuk ke server
+- WhatsApp Gateway (`telepati-wa`) — integrasi go-whatsapp-web-multidevice sebagai service terpisah, multi-device
+- WhatsApp templates CRUD + sent messages persistence layer — simpan riwayat pesan outbound per workspace
+
+### Fixed
+- Docker Hub image name `teliti/telepati` (sebelumnya salah: `teeliti`)
+
+### Changed
+- `INTERNAL_MODE` pindah dari env var ke build tag `//go:build internal` — tidak bisa di-override di runtime production
+- Installer refactor — replace INTERNAL_MODE env var dengan build tag
 
 ---
 
@@ -32,5 +53,6 @@ _(tambahkan perubahan di sini saat develop, sebelum release)_
 
 ---
 
-[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.2.0...HEAD
+[v0.2.0]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0...v0.2.0
 [v0.1.0]: https://github.com/teliti-dev/telepati-release/releases/tag/v0.1.0
