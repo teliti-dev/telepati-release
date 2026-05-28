@@ -19,6 +19,31 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.0.2] — 2026-05-28
+
+### Added
+- Network map backend v2 — tube model (configurable core counts, colors), cable codes, JoinBox device type, core joins, list APIs
+- Topology validation & network graph engine (T-008) — cascading ratio checks, path closed detection, mid-route stub warnings, custom core colors
+- PPPoE proxy (T-022) — RouterOS client, PPPoE servers, PPP profiles, PPP secrets CRUD + sync
+- Production readiness (T-006) — security headers, rate limiter, production docker compose
+- Self-hosted anti-crack hardening (T-040)
+- License flexible limits from Portal + WhatsApp feature gate (T-038)
+- License expired read-only mode (T-036)
+- VPN peer self-registration via dashboard (T-041) — native WireGuard, QR code, RouterOS config
+- Cloud entrypoint (T-039) — cmd/cloud, organizations, subscriptions, tier limits
+- VPN WireGuard tunnel (T-035) — vpn_peers table, agent binary, heartbeat, stale peer sweep
+
+### Fixed
+- VPN RouterOS config — add ip route to VPN network
+- Cross-origin cookie SameSite None for T-041
+- Workspace orgID on creation (fix 403)
+- Migrations TEXT/UUID type mismatch in cloud migrations
+
+### Changed
+- Ansible deploy playbook for Telepati Cloud server
+
+---
+
 ## [v0.2.0] — 2026-05-26
 
 ### Added
@@ -53,6 +78,7 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
-[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.0.2...HEAD
+[v0.0.2]: https://github.com/teliti-dev/telepati-release/compare/v0.2.0...v0.0.2
 [v0.2.0]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0...v0.2.0
 [v0.1.0]: https://github.com/teliti-dev/telepati-release/releases/tag/v0.1.0
