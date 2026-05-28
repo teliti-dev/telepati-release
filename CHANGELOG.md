@@ -19,6 +19,24 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.0.4] — 2026-05-28
+
+### Added
+- Network map UX update (T-043) — tiang sprite marker icons per tipe, view-only info panels, extend cable tool
+- Cable management pages (T-044) — list dengan search + kode kabel, config page dengan TubeEditor visual, core colors override, core stubs management, rute kabel
+- Tiang management pages (T-045) — list dengan filter tipe, config page 3 tab (perangkat, kabel, sambungan core)
+- Device config pages + Join Box (T-046) — device list dengan filter tipe, config page per device, Join Box tipe baru
+- Visual Splice Editor (T-047) — SVG drag-and-drop editor untuk sambungan core di Join Box, bezier curve connections, tube grouping, TIA-598 colors
+- Cloud/Self-hosted build separation — pipeline terpisah: cloud binary (cloud/v* tags) vs self-hosted (v* tags), mencegah license key leak ke binary cloud
+
+### Fixed
+
+### Changed
+
+### Removed
+
+---
+
 ## [v0.0.2] — 2026-05-28
 
 ### Added
@@ -78,7 +96,8 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
-[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.0.2...HEAD
+[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.0.4...HEAD
+[v0.0.4]: https://github.com/teliti-dev/telepati-release/compare/v0.0.2...v0.0.4
 [v0.0.2]: https://github.com/teliti-dev/telepati-release/compare/v0.2.0...v0.0.2
 [v0.2.0]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0...v0.2.0
 [v0.1.0]: https://github.com/teliti-dev/telepati-release/releases/tag/v0.1.0

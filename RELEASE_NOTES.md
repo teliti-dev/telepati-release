@@ -1,22 +1,16 @@
 ## Apa yang Baru
 
 - **Network map backend v2** — tube model (configurable core counts, warna per tube), cable codes, JoinBox device type, core joins API, list APIs untuk kabel dan tiang
-- **Topology validation engine** — deteksi cascading ratio berlebih, path closed, mid-route stub, custom core colors per kabel
-- **PPPoE proxy** — RouterOS client, CRUD PPPoE servers/profiles/secrets, sync ke MikroTik
-- **Production readiness** — security headers, rate limiter, production docker compose
-- **Self-hosted anti-crack hardening** — proteksi binary dari reverse engineering dan tampering
-- **VPN WireGuard tunnel** — agent binary, vpn_peers table, heartbeat 30s, stale peer sweep, QR code, RouterOS config snippet
-- **VPN peer self-registration via dashboard** — customer bisa daftar VPN peer sendiri dari dashboard
-- **Cloud entrypoint** — cmd/cloud binary, organizations + subscriptions, tier limits (trial/starter/pro/business)
-- **License flexible limits** — Portal bisa set limit per feature per license, WhatsApp feature gate
-- **License expired read-only mode** — expired license tidak blokir akses, tapi read-only
+- **Network map UX update** — tiang sprite marker icons per tipe (ODP/ODC/JB), view-only info panel, extend cable tool
+- **Cable management pages** — list dengan search + pagination + kode kabel, config page dengan TubeEditor visual, core colors override, core stubs management, rute kabel
+- **Tiang management pages** — list dengan filter tipe, config page 3 tab (perangkat, kabel, sambungan core)
+- **Device config pages + Join Box** — device list dengan filter tipe, config page per device (port assignment, inline edit, pass-through toggle), Join Box tipe baru
+- **Visual Splice Editor** — SVG drag-and-drop editor untuk menyambung core antar kabel di Join Box, bezier curve connections, tube grouping, TIA-598 colors
+- **Cloud/Self-hosted build separation** — pipeline terpisah: cloud (`cloud/v*` tags) vs self-hosted (`v*` tags), mencegah license key leak ke binary cloud
 
 ## Bug Fixes
 
-- VPN RouterOS config — tambah `ip route` ke VPN network
-- Cross-origin cookie SameSite None untuk VPN peer dashboard (akses dari domain berbeda)
-- Workspace orgID saat creation — fix 403 di cloud binary
-- Migrations TEXT/UUID type mismatch di cloud migrations
+Tidak ada bug fix spesifik pada release ini.
 
 ## Breaking Changes
 
@@ -30,9 +24,9 @@ Tidak ada breaking changes pada release ini.
 curl -fsSL https://telepati.in/install.sh | bash
 ```
 
-Atau download binary langsung dari [GitHub Releases](https://github.com/teliti-dev/telepati-release/releases/tag/v0.0.2).
+Atau download binary langsung dari [GitHub Releases](https://github.com/teliti-dev/telepati-release/releases/tag/v0.0.4).
 
-## Upgrade dari v0.2.0
+## Upgrade dari v0.0.2
 
 ```bash
 sudo telepati update apply
