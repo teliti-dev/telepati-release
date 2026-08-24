@@ -47,21 +47,14 @@ Setiap release berisi:
 
 | File | Deskripsi |
 |---|---|
-| `telepati_linux_{arch}.tar.gz` | CLI + server binary (`telepati serve`, `telepati install bare`, dll) — berisi juga `migrations/` |
-| `telepati-snmp-worker_linux_{arch}.tar.gz` | SNMP polling worker |
-| `telepati-stream_linux_{arch}.tar.gz` | Real-time WebSocket (SSH terminal, live monitoring) |
-| `telepati-agent_linux_{arch}.tar.gz` | AI chat assistant |
-| `telepati-worker_linux_{arch}.tar.gz` | Billing cron, PPPoE sync, VPN watcher |
-| `telepati-acs_linux_{arch}.tar.gz` | TR-069/CWMP provisioning ONU/OLT |
-| `telepati-isolir-dns_linux_{arch}.tar.gz` / `telepati-isolir-web_linux_{arch}.tar.gz` | Captive portal (DNS + halaman isolir) |
-| `telepati-wa_linux_{arch}.tar.gz` | WhatsApp gateway |
+| `telepati_linux_{arch}.tar.gz` | **Satu archive gabungan** — semua 9 binary service (API server, SNMP worker, stream, AI agent, billing worker, ACS, isolir DNS/web, WhatsApp gateway) + `migrations/` |
 | `dashboard_{version}.tar.gz` | Build frontend (dashboard SPA) |
 | `checksums.txt` | SHA256 checksum semua artifact |
 | `install.sh` | Script installer satu baris |
 
 Arsitektur yang didukung: `amd64`, `arm64`, `arm` (armv7).
 
-Anda tidak perlu download manual satu-satu — `telepati install bare` men-download semua binary yang relevan secara otomatis.
+`telepati install bare` men-download satu archive ini dan memasang semua service sekaligus — tidak ada download binary satu-satu lagi.
 
 ## Upgrade
 
