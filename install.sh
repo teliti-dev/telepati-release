@@ -51,8 +51,17 @@ if [ "$VERSION" = "latest" ]; then
     | head -1 \
     | sed -E 's/.*"tag_name":[[:space:]]*"([^"]+)".*/\1/')
 
+  # /releases/latest skips pre-releases (alpha/beta/rc) — while there's no
+  # stable release yet, fall back to the most recent release of any kind.
+  if [ -z "$VERSION" ]; then
+    VERSION=$(curl -fsSL "https://api.github.com/repos/${REPO}/releases" \
+      | grep '"tag_name"' \
+      | head -1 \
+      | sed -E 's/.*"tag_name":[[:space:]]*"([^"]+)".*/\1/')
+  fi
+
   [ -n "$VERSION" ] || \
-    error "Gagal mendapatkan versi terbaru. Cek koneksi internet, atau set versi secara manual:\n\n  TELEPATI_VERSION=v00.01.000 curl -fsSL https://get.telepati.id | sudo bash\n"
+    error "Gagal mendapatkan versi terbaru. Cek koneksi internet, atau set versi secara manual:\n\n  TELEPATI_VERSION=v0.1.0-alpha.1 curl -fsSL https://get.telepati.id | sudo bash\n"
 fi
 
 # ── Header ─────────────────────────────────────────────────────────────────────
@@ -69,7 +78,7 @@ TMPDIR=$(mktemp -d)
 trap 'rm -rf "$TMPDIR"' EXIT
 
 BASE_URL="https://github.com/${REPO}/releases/download/${VERSION}"
-FILENAME="telepati_${VERSION}_linux_${ARCH}.tar.gz"
+FILENAME="telepati_linux_${ARCH}.tar.gz"
 
 # ── Download binary ────────────────────────────────────────────────────────────
 step "Mendownload ${FILENAME}..."
@@ -104,8 +113,7 @@ echo ""
 info "telepati ${VERSION} berhasil diinstall di ${INSTALL_DIR}/${BINARY}"
 echo ""
 printf "  ${BOLD}Langkah selanjutnya:${RESET}\n"
-printf "    sudo telepati install bare     # Install di server Ubuntu/Debian\n"
-printf "    telepati install docker        # Setup menggunakan Docker\n"
+printf "    sudo telepati install bare     # Install Postgres, WireGuard, dan semua service Telepati\n"
 echo ""
 printf "  Dokumentasi: https://docs.telepati.id\n"
 echo ""

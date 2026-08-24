@@ -1,52 +1,74 @@
 # Telepati Release
 
-Binary releases for the [Telepati ISP Dashboard](https://telepati.id).
+Binary release untuk [Telepati ISP Dashboard](https://telepati.id) — dashboard manajemen ISP self-hosted (pelanggan, billing, PPPoE, network map, MikroTik/GPON, WireGuard VPN).
 
-## Install
+Repo ini cuma berisi artifact hasil build (binary + dashboard) — source code ada di repo privat terpisah.
 
-```bash
-curl -fsSL https://get.telepati.id | bash
-```
+## Instalasi
 
-or manually:
+Butuh server Ubuntu 22.04+ / Debian 12+ (bare-metal atau VM), akses root.
 
 ```bash
-curl -fsSL https://github.com/teliti-dev/telepati-release/releases/latest/download/install.sh | bash
+curl -fsSL https://get.telepati.id | sudo bash
+sudo telepati install bare
 ```
 
-Then run the installer:
+Langkah pertama men-download CLI `telepati` ke `/usr/local/bin`. Langkah kedua menjalankan installer — **sepenuhnya otomatis, tanpa pertanyaan apa pun**:
 
-```bash
-sudo telepati install bare      # server Ubuntu/Debian
-telepati install docker         # Docker Compose
+- Install PostgreSQL via `apt`
+- Install & konfigurasi WireGuard VPN (interface `telepati`, port `51820/udp`)
+- Buat user sistem `telepati`, database, dan seluruh file konfigurasi
+- Download dan pasang semua service Telepati (API, SNMP worker, stream, AI agent, billing worker, ACS, isolir DNS/web, WhatsApp gateway) sebagai systemd unit
+- Enable + start semua service, lalu tunggu sampai health check lolos
+
+Instalasi selesai dalam beberapa menit. Di akhir, installer menampilkan URL untuk lanjut ke langkah berikutnya:
+
+```
+[✓] Telepati berhasil diinstall!
+
+  Buka http://<ip-server-anda>:8080 untuk menyelesaikan setup (buat akun admin & workspace pertama).
 ```
 
-Butuh license key? Kunjungi [telepati.id/beta](https://telepati.id/beta)
+> **Selama fase alpha/beta** (belum ada release stable), pin versi secara eksplisit:
+> ```bash
+> TELEPATI_VERSION=v0.1.0-alpha.1 curl -fsSL https://get.telepati.id | sudo bash
+> ```
+> Lihat versi terbaru di [Releases](https://github.com/teliti-dev/telepati-release/releases).
+
+### Setup akun admin & workspace
+
+Buka `http://<ip-server>:8080` di browser — akan otomatis diarahkan ke layar setup. Isi nama, email, password admin, dan nama workspace pertama Anda, lalu login. Setelah ini selesai, layar setup tidak akan muncul lagi (satu kali saja, per instalasi).
+
+Instalasi default belum punya domain/HTTPS — dashboard diakses langsung via IP + port. Untuk pasang domain dan HTTPS otomatis (Let's Encrypt) atau Cloudflare Tunnel, konfigurasi lewat `telepati config` setelah setup selesai.
 
 ## Artifacts
 
-Each release contains:
+Setiap release berisi:
 
-| File | Description |
+| File | Deskripsi |
 |---|---|
-| `telepati_{version}_linux_amd64.tar.gz` | CLI binary — Linux x86_64 |
-| `telepati_{version}_linux_arm64.tar.gz` | CLI binary — Linux ARM64 |
-| `server_{version}_linux_amd64.tar.gz` | Server binary — Linux x86_64 |
-| `server_{version}_linux_arm64.tar.gz` | Server binary — Linux ARM64 |
-| `checksums.txt` | SHA256 checksums for all artifacts |
-| `install.sh` | One-liner installer script |
+| `telepati_linux_{arch}.tar.gz` | CLI + server binary (`telepati serve`, `telepati install bare`, dll) — berisi juga `migrations/` |
+| `telepati-snmp-worker_linux_{arch}.tar.gz` | SNMP polling worker |
+| `telepati-stream_linux_{arch}.tar.gz` | Real-time WebSocket (SSH terminal, live monitoring) |
+| `telepati-agent_linux_{arch}.tar.gz` | AI chat assistant |
+| `telepati-worker_linux_{arch}.tar.gz` | Billing cron, PPPoE sync, VPN watcher |
+| `telepati-acs_linux_{arch}.tar.gz` | TR-069/CWMP provisioning ONU/OLT |
+| `telepati-isolir-dns_linux_{arch}.tar.gz` / `telepati-isolir-web_linux_{arch}.tar.gz` | Captive portal (DNS + halaman isolir) |
+| `telepati-wa_linux_{arch}.tar.gz` | WhatsApp gateway |
+| `dashboard_{version}.tar.gz` | Build frontend (dashboard SPA) |
+| `checksums.txt` | SHA256 checksum semua artifact |
+| `install.sh` | Script installer satu baris |
 
-## Docker
+Arsitektur yang didukung: `amd64`, `arm64`, `arm` (armv7).
+
+Anda tidak perlu download manual satu-satu — `telepati install bare` men-download semua binary yang relevan secara otomatis.
+
+## Upgrade
 
 ```bash
-docker pull teliti/telepati:{version}
-docker pull teliti/telepati:latest
+sudo telepati update apply
 ```
 
-## Documentation
+## Dokumentasi
 
-Full documentation at [docs.telepati.id](https://docs.telepati.id).
-
-## License
-
-Telepati is proprietary software. See [telepati.id/pricing](https://telepati.id/pricing) for licensing options.
+Dokumentasi lengkap di [docs.telepati.id](https://docs.telepati.id).
