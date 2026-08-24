@@ -10,7 +10,7 @@ Butuh server Ubuntu 22.04+ / Debian 12+ (bare-metal atau VM), akses root.
 
 ```bash
 curl -fsSL https://get.telepati.id | sudo bash
-sudo telepati install bare
+sudo telepati install
 ```
 
 Langkah pertama men-download CLI `telepati` ke `/usr/local/bin`. Langkah kedua menjalankan installer — **sepenuhnya otomatis, tanpa pertanyaan apa pun**:
@@ -54,7 +54,7 @@ Setiap release berisi:
 
 Arsitektur yang didukung: `amd64`, `arm64`, `arm` (armv7).
 
-`telepati install bare` men-download satu archive ini dan memasang semua service sekaligus — tidak ada download binary satu-satu lagi.
+`telepati install` men-download satu archive ini dan memasang semua service sekaligus — tidak ada download binary satu-satu lagi.
 
 ## Upgrade
 
