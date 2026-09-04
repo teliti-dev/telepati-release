@@ -19,6 +19,13 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.1.0-alpha.7] — 2026-09-04
+
+### Fixed
+- Installer advertised (and set CORS `ALLOWED_ORIGINS` to) an unreachable private IP on cloud VPS hosts that float/NAT a public IP onto an interface the VM itself never sees — a public-IP echo lookup is now tried first, falling back to the previous local-routing heuristic for on-prem/LAN-only hosts.
+
+---
+
 ## [v0.1.0-alpha.6] — 2026-09-04
 
 ### Fixed
@@ -142,7 +149,8 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
-[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.6...HEAD
+[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.7...HEAD
+[v0.1.0-alpha.7]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.6...v0.1.0-alpha.7
 [v0.1.0-alpha.6]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.5...v0.1.0-alpha.6
 [v0.1.0-alpha.5]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.4...v0.1.0-alpha.5
 [v0.1.0-alpha.4]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.3...v0.1.0-alpha.4
