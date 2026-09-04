@@ -19,6 +19,13 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.1.0-alpha.6] — 2026-09-04
+
+### Fixed
+- Re-running `telepati install` after an earlier partial-install attempt could leave the Postgres role's actual password out of sync with the freshly-regenerated `telepati.conf`, making the service fail to start with `password authentication failed for user "telepati"`. The role's password is now reset to match on every run instead of left untouched when the role already exists.
+
+---
+
 ## [v0.1.0-alpha.5] — 2026-09-04
 
 ### Fixed
@@ -135,7 +142,8 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
-[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.5...HEAD
+[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.6...HEAD
+[v0.1.0-alpha.6]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.5...v0.1.0-alpha.6
 [v0.1.0-alpha.5]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.4...v0.1.0-alpha.5
 [v0.1.0-alpha.4]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.3...v0.1.0-alpha.4
 [v0.1.0-alpha.3]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.2...v0.1.0-alpha.3
