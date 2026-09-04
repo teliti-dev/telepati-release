@@ -19,6 +19,30 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.1.0-alpha.3] — 2026-09-04
+
+### Added
+- **Web-based first-run setup screen** — `/setup` route creates the first admin + workspace through the browser after `telepati install`, calling the previously-unused `GET/POST /api/v1/setup/*` endpoints. Auto-redirects: `/auth/sign-in` → `/setup` when no admin exists yet, and back once setup is done.
+- **Hotspot RADIUS + Captive Portal system** — RADIUS auth for hotspot users, guest mode, double-login policy, per-profile captive portal template selection, dashboard CRUD for portal profiles.
+- **Captive Portal Template editor** — upload, rename, real nested folders with drag-and-drop move, zip upload (with folder support), public asset route for template CSS/JS/images, logo/banner support, live template preview grid.
+- **Cloud captive portal hotspot authorize/deauthorize** — Telepati owns hotspot session lifecycle via the RouterOS API, opt-in per profile.
+- **Router auto-provisioning** — automated MikroTik onboarding flow.
+- **DNS / Captive Portal service status pages** — per-service status pages, standardized service ports (53/80/80).
+- Redesigned default captive portal template — responsive, light/dark/system theme, social footer, separated CSS/JS assets.
+- Redesigned workspace dashboard — consistent card styling app-wide, overdue invoices widget, "Aplikasi & CS" sidebar group split out from customer accounts.
+
+### Fixed
+- Hotspot users without a manually-set expiry date never expired (now auto-expire from first login + package validity, matching voucher behavior).
+- Captive portal logout button silently hidden by an unscoped CSS selector collision.
+- "Default (bawaan)" captive portal template option didn't actually render the built-in template's content.
+- RouterOS hotspot command timeout handling.
+- Nested folders in Upload Template `.zip` were previously rejected.
+
+### Changed
+- telepati-server is now a single monorepo (`server/` + `web/`) — the frontend previously synced from a separate `webapp` checkout.
+
+---
+
 ## [v0.0.4] — 2026-05-28
 
 ### Added
@@ -96,7 +120,8 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
-[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.0.4...HEAD
+[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.3...HEAD
+[v0.1.0-alpha.3]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.2...v0.1.0-alpha.3
 [v0.0.4]: https://github.com/teliti-dev/telepati-release/compare/v0.0.2...v0.0.4
 [v0.0.2]: https://github.com/teliti-dev/telepati-release/compare/v0.2.0...v0.0.2
 [v0.2.0]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0...v0.2.0

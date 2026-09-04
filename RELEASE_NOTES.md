@@ -1,16 +1,21 @@
 ## Apa yang Baru
 
-- **Network map backend v2** — tube model (configurable core counts, warna per tube), cable codes, JoinBox device type, core joins API, list APIs untuk kabel dan tiang
-- **Network map UX update** — tiang sprite marker icons per tipe (ODP/ODC/JB), view-only info panel, extend cable tool
-- **Cable management pages** — list dengan search + pagination + kode kabel, config page dengan TubeEditor visual, core colors override, core stubs management, rute kabel
-- **Tiang management pages** — list dengan filter tipe, config page 3 tab (perangkat, kabel, sambungan core)
-- **Device config pages + Join Box** — device list dengan filter tipe, config page per device (port assignment, inline edit, pass-through toggle), Join Box tipe baru
-- **Visual Splice Editor** — SVG drag-and-drop editor untuk menyambung core antar kabel di Join Box, bezier curve connections, tube grouping, TIA-598 colors
-- **Cloud/Self-hosted build separation** — pipeline terpisah: cloud (`cloud/v*` tags) vs self-hosted (`v*` tags), mencegah license key leak ke binary cloud
+- **Web-based first-run setup screen** — buat akun admin + workspace pertama langsung lewat browser di `/setup` setelah `telepati install`, tidak perlu lagi set `ADMIN_EMAIL`/`ADMIN_PASSWORD` manual.
+- **Hotspot RADIUS + Captive Portal** — autentikasi RADIUS untuk hotspot, guest mode, kebijakan double-login, pemilihan template captive portal per profile, dashboard CRUD untuk profile portal.
+- **Captive Portal Template editor** — upload file/zip (dengan dukungan folder), rename, folder nested asli dengan drag-and-drop, rute asset publik untuk CSS/JS/gambar template, dukungan logo/banner, grid preview template.
+- **Cloud captive portal hotspot authorize/deauthorize** — Telepati mengelola siklus hidup sesi hotspot langsung lewat RouterOS API, opt-in per profile.
+- **Router auto-provisioning** — alur onboarding MikroTik otomatis.
+- **Halaman status layanan DNS / Captive Portal** — status page per-layanan, port layanan distandarisasi (53/80/80).
+- Redesign template captive portal bawaan — responsive, mode light/dark/system, footer sosial media, CSS/JS terpisah.
+- Redesign dashboard workspace — style card konsisten di seluruh dashboard, widget tagihan jatuh tempo, grup sidebar "Aplikasi & CS" dipisah dari daftar pelanggan.
 
 ## Bug Fixes
 
-Tidak ada bug fix spesifik pada release ini.
+- Hotspot user tanpa tanggal expired manual tidak pernah expired (sekarang auto-expire dari login pertama + validitas paket, sama seperti voucher).
+- Tombol logout di captive portal tersembunyi akibat bentrok CSS selector.
+- Opsi template "Default (bawaan)" tidak benar-benar merender konten template bawaan.
+- Timeout command RouterOS hotspot.
+- Folder nested di Upload Template `.zip` sebelumnya ditolak validasi.
 
 ## Breaking Changes
 
@@ -21,12 +26,11 @@ Tidak ada breaking changes pada release ini.
 ## Instalasi
 
 ```bash
-curl -fsSL https://telepati.in/install.sh | bash
+curl -fsSL https://get.telepati.id | sudo bash
+sudo telepati install
 ```
 
-Atau download binary langsung dari [GitHub Releases](https://github.com/teliti-dev/telepati-release/releases/tag/v0.0.4).
-
-## Upgrade dari v0.0.2
+## Upgrade dari v0.1.0-alpha.2
 
 ```bash
 sudo telepati update apply
