@@ -19,6 +19,13 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.1.0-alpha.5] — 2026-09-04
+
+### Fixed
+- `telepati install` failed with `database "telepati" already exists` when re-run after an earlier install attempt failed partway through (past the DB-creation step but before completing). `CREATE DATABASE` now checks existence first instead of running unconditionally.
+
+---
+
 ## [v0.1.0-alpha.4] — 2026-09-04
 
 ### Fixed
@@ -128,7 +135,8 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
-[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.4...HEAD
+[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.5...HEAD
+[v0.1.0-alpha.5]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.4...v0.1.0-alpha.5
 [v0.1.0-alpha.4]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.3...v0.1.0-alpha.4
 [v0.1.0-alpha.3]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.2...v0.1.0-alpha.3
 [v0.0.4]: https://github.com/teliti-dev/telepati-release/compare/v0.0.2...v0.0.4
