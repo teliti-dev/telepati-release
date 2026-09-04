@@ -46,13 +46,15 @@ fi
 # ── Resolve version ────────────────────────────────────────────────────────────
 if [ "$VERSION" = "latest" ]; then
   step "Mengambil informasi versi terbaru..."
-  VERSION=$(curl -fsSL "https://api.github.com/repos/${REPO}/releases/latest" \
+  # /releases/latest skips pre-releases (alpha/beta/rc) and 404s while there's
+  # no stable release yet — that 404 must not abort the script under `set -e`,
+  # so this first attempt is allowed to fail silently and fall through to the
+  # /releases (list-all, includes pre-releases) fallback below.
+  VERSION=$( (curl -fsSL "https://api.github.com/repos/${REPO}/releases/latest" 2>/dev/null \
     | grep '"tag_name"' \
     | head -1 \
-    | sed -E 's/.*"tag_name":[[:space:]]*"([^"]+)".*/\1/')
+    | sed -E 's/.*"tag_name":[[:space:]]*"([^"]+)".*/\1/') || true)
 
-  # /releases/latest skips pre-releases (alpha/beta/rc) — while there's no
-  # stable release yet, fall back to the most recent release of any kind.
   if [ -z "$VERSION" ]; then
     VERSION=$(curl -fsSL "https://api.github.com/repos/${REPO}/releases" \
       | grep '"tag_name"' \
