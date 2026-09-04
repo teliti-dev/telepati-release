@@ -19,6 +19,14 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.1.0-alpha.4] — 2026-09-04
+
+### Fixed
+- `telepati install` and `telepati update` failed to resolve the latest version ("gagal ambil versi terbaru: exit status 22") because `/releases/latest` 404s while every release is a pre-release — both now fall back to listing all releases when that happens.
+- `install.sh`'s own fallback for the same 404 existed but was unreachable — `set -euo pipefail` aborted the script before it could run.
+
+---
+
 ## [v0.1.0-alpha.3] — 2026-09-04
 
 ### Added
@@ -120,7 +128,8 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
-[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.3...HEAD
+[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.4...HEAD
+[v0.1.0-alpha.4]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.3...v0.1.0-alpha.4
 [v0.1.0-alpha.3]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.2...v0.1.0-alpha.3
 [v0.0.4]: https://github.com/teliti-dev/telepati-release/compare/v0.0.2...v0.0.4
 [v0.0.2]: https://github.com/teliti-dev/telepati-release/compare/v0.2.0...v0.0.2
