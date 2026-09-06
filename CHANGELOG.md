@@ -19,6 +19,28 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.1.0-alpha.8] — 2026-09-06
+
+### Added
+- Installer now auto-fills per-service dedicated bind addresses (RADIUS, ACS, Isolir DNS, Isolir Web) from the host's own detected IP on a fresh direct-mode install, instead of leaving them unset until an operator manually edits `telepati.conf`. When Isolir Web and Hotspot Portal would otherwise collide on port 80 sharing that IP, the installer now ARP-probes the local subnet for free addresses and assigns each its own (persisted across reboots).
+- App-wide "+ Filter → pick field → chip" UI pattern rolled out across Accounts, Packages, Billing, Hotspot Vouchers, Seller Accounts, and Network Map pages.
+- `?type=` filter on the infra device list API.
+
+### Fixed
+- Captive Portal, RADIUS, and DNS each resolved a workspace's "dedicated IP" with their own independent (and inconsistent) logic — unified into a single resolver, fixing two workspaces on different network topologies (VLAN vs. WireGuard) from ever showing the same address by coincidence of tier-ordering bugs.
+- DNS page's "Redirect IP" field couldn't be cleared back to auto-resolve once a manual override was set (sent `null` instead of an empty string, which the backend treats as "no change").
+- Isolir page's HTTP redirect setup wizard refused to generate its Mikrotik NAT command for any workspace relying on auto-resolved addressing (VLAN/WireGuard) instead of a manual override.
+- The actual running Isolir DNS/HTTP redirect servers (not just the dashboard) used to fall back to the WireGuard *server's own* tunnel IP, or nothing at all, when a workspace had no manual redirect override — silently breaking the redirect for any auto-resolved workspace. Now resolves the same VLAN/WireGuard subnet the dashboard already computes.
+- RADIUS page's Mikrotik auto-provisioning wizard required re-typing an IP already shown a few lines up on the same page; its manual setup snippet also had a hardcoded example IP that didn't match the workspace's actual address.
+- Installer wrote systemd units for RADIUS, ACS, Hotspot Portal, Worker, and the AI Agent, but never enabled or started any of them — a fresh install left all five inactive with no error shown, requiring an operator to discover and use the dashboard's Services panel by hand.
+- Page headers (title/description) were missing on ~40 dashboard pages after an incomplete prior cleanup.
+
+### Changed
+
+### Removed
+
+---
+
 ## [v0.1.0-alpha.7] — 2026-09-04
 
 ### Fixed
@@ -149,7 +171,8 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
-[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.7...HEAD
+[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.8...HEAD
+[v0.1.0-alpha.8]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.7...v0.1.0-alpha.8
 [v0.1.0-alpha.7]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.6...v0.1.0-alpha.7
 [v0.1.0-alpha.6]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.5...v0.1.0-alpha.6
 [v0.1.0-alpha.5]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.4...v0.1.0-alpha.5
