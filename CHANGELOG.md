@@ -19,6 +19,18 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.1.0-alpha.11] — 2026-09-07
+
+### Changed
+- SNMP Overview page redesigned from reporting the `telepati-snmp` poller process's own health into a fleet health dashboard: stat cards for devices online/offline/never-checked, a device table sorted problem-first (offline/unknown devices surface before healthy ones), and a 3-step getting-started card when no device has SNMP enabled yet. Poller process health is kept but demoted to a compact secondary card.
+- ACS, DNS, and Hotspot Portal device tables also now sort offline/never-checked-in devices first, matching the SNMP page.
+- Removed leftover page titles from the top header bar across ~40 pages app-wide (accounts, ACS, AI Chat, auth, billing, captive portal, extensions, hotspot, infrastructure, locations, seller, seller admin, system services/settings, technician, workspaces) — the header bar is navigation-only now, matching the current design system.
+
+### Fixed
+- ACS, DNS, and Hotspot Portal Overview pages each showed a hardcoded "Online" status for their backing service, regardless of whether it was actually running — now backed by real process health (active state, CPU, memory, uptime), turning red when the service isn't active.
+
+---
+
 ## [v0.1.0-alpha.10] — 2026-09-06
 
 ### Added
@@ -197,7 +209,8 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
-[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.10...HEAD
+[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.11...HEAD
+[v0.1.0-alpha.11]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.10...v0.1.0-alpha.11
 [v0.1.0-alpha.10]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.9...v0.1.0-alpha.10
 [v0.1.0-alpha.9]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.8...v0.1.0-alpha.9
 [v0.1.0-alpha.8]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.7...v0.1.0-alpha.8
