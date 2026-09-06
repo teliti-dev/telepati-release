@@ -1,14 +1,22 @@
 ## Apa yang Baru
 
-Tidak ada fitur baru pada release ini — patch fix saja.
+- `telepati services` — tabel status semua service (state, PID, memori, CPU, uptime) dalam satu perintah; `restart`/`logs`/`start`/`stop`/`status` sekarang bisa diarahkan ke service tertentu (bukan cuma `telepati` API server saja).
+- `telepati uninstall` — menghapus semua yang dibuat installer (systemd unit, sudoers, WireGuard, alias IP per-service, config Caddy/cloudflared, `/opt/telepati`, `/etc/telepati`, `/var/log/telepati`, user sistem `telepati`). Database dan `/var/lib/telepati` (state.db, captive portal templates) TIDAK ikut dihapus secara default — pakai `--purge-data` untuk ikut menghapusnya juga (backup otomatis dibuat lebih dulu).
+- `telepati manage backup`/`restore` sekarang membuat/memulihkan satu archive lengkap (database + state.db + captive portal templates + telepati.conf), bukan cuma dump database. Archive di atas 1024 MB otomatis dipecah jadi beberapa bagian; restore menggabung dan memverifikasi checksum sebelum diproses.
 
 ## Bug Fixes
 
-- Koneksi RouterOS yang berhasil login tepat setelah batas waktu (timeout) Telepati habis meninggalkan sesi login yang menggantung di device, bukan ditutup dengan benar — terlihat di log device sebagai login lalu logout beberapa detik setelah Telepati sudah terlanjur melaporkan "Gagal — periksa host, port, dan kredensial" ke pengguna. Login di device sebenarnya berhasil; Telepati saja yang sudah berhenti menunggu hasilnya. Sekarang koneksi yang berhasil telat tetap ditutup dengan benar, tidak dibiarkan menggantung.
+- `telepati update check`/`update apply` (tanpa `--version`) selalu melaporkan "sudah versi terbaru" walau sebenarnya ada rilis baru — versi CLI sendiri belum tersambung dengan benar ke perbandingan versi.
+- `telepati update apply` mengganti binary RADIUS dan Hotspot Portal tapi tidak pernah me-restart service-nya, sehingga versi lama tetap berjalan diam-diam sampai di-restart manual.
+
+## Perubahan Lain
+
+- Service DNS di-rename dari `telepati-isolir-dns` menjadi `telepati-dns` (binary, systemd unit, referensi CLI) — service ini dipakai baik oleh redirect-DNS Isolir maupun hotspot, bukan cuma Isolir. `telepati update apply` di instance yang sudah ada otomatis memigrasikan unit lama ke nama baru.
+- `telepati manage status`/`logs`/`diagnose` dihapus — duplikat basi dari `telepati status`/`logs`/`diagnose` di root, peninggalan mode deployment Docker/Kubernetes yang sudah tidak dipakai lagi.
 
 ## Breaking Changes
 
-Tidak ada breaking changes pada release ini.
+Tidak ada breaking changes pada release ini — rename service DNS ditangani otomatis lewat migrasi di `update apply`.
 
 ---
 
@@ -21,7 +29,7 @@ curl -fsSL https://raw.githubusercontent.com/teliti-dev/telepati-release/main/in
 ## Upgrade dari versi sebelumnya
 
 ```bash
-sudo telepati update
+sudo telepati update apply
 ```
 
 ---

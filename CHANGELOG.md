@@ -19,6 +19,25 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.1.0-alpha.10] — 2026-09-06
+
+### Added
+- `telepati services` — table of every managed service's status (state, PID, memory, CPU, uptime) in one command; `restart`/`logs`/`start`/`stop`/`status` now all accept an optional service name (default: `telepati` itself) instead of only ever targeting the main API server.
+- `telepati uninstall` — removes everything a bare-metal install creates (systemd units, sudoers, WireGuard interface + iptables chains, per-service IP aliases, Caddy/cloudflared config, `/opt/telepati`, `/etc/telepati`, `/var/log/telepati`, the `telepati` system user). Database and `/var/lib/telepati` (state.db, captive portal templates) are left alone by default — `--purge-data` removes those too, taking one last backup first.
+- `telepati manage backup`/`restore` now produce/restore one archive covering the database, `state.db`, captive portal templates, and `telepati.conf` — not just a bare database dump. Archives over 1024 MB (configurable) are automatically split into numbered parts; restore reassembles and verifies a checksum before touching anything.
+
+### Fixed
+- `telepati update check`/`update apply` (without `--version`) always reported "sudah versi terbaru" even when a newer release existed — the CLI's own version was never wired into the comparison.
+- `telepati update apply` replaced the RADIUS and Hotspot Portal binaries but never restarted their services, leaving the old process silently running until a manual restart.
+
+### Changed
+- DNS service renamed `telepati-isolir-dns` → `telepati-dns` (binary, systemd unit, CLI references) — it backs both Isolir's redirect-DNS and hotspot flows, not just Isolir. `telepati update apply` on an existing install migrates the old unit automatically.
+
+### Removed
+- `telepati manage status`/`logs`/`diagnose` — stale duplicates of the root-level `telepati status`/`logs`/`diagnose` commands, left over from a pre-bare-metal Docker/Kubernetes deployment mode that no longer exists.
+
+---
+
 ## [v0.1.0-alpha.9] — 2026-09-06
 
 ### Fixed
@@ -178,7 +197,8 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
-[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.9...HEAD
+[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.10...HEAD
+[v0.1.0-alpha.10]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.9...v0.1.0-alpha.10
 [v0.1.0-alpha.9]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.8...v0.1.0-alpha.9
 [v0.1.0-alpha.8]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.7...v0.1.0-alpha.8
 [v0.1.0-alpha.7]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.6...v0.1.0-alpha.7
