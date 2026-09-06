@@ -19,6 +19,13 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.1.0-alpha.9] — 2026-09-06
+
+### Fixed
+- A RouterOS connection that finished authenticating just after Telepati's dial timeout expired left an authenticated session running in the background instead of being cleaned up — visible on the device as a clean login/logout pair a few seconds after Telepati had already reported "Gagal — periksa host, port, dan kredensial" to the operator. The device's login genuinely succeeded; Telepati just wasn't listening for the result anymore by the time it arrived. Late successes are now closed instead of abandoned.
+
+---
+
 ## [v0.1.0-alpha.8] — 2026-09-06
 
 ### Added
@@ -171,7 +178,8 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
-[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.8...HEAD
+[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.9...HEAD
+[v0.1.0-alpha.9]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.8...v0.1.0-alpha.9
 [v0.1.0-alpha.8]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.7...v0.1.0-alpha.8
 [v0.1.0-alpha.7]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.6...v0.1.0-alpha.7
 [v0.1.0-alpha.6]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.5...v0.1.0-alpha.6
