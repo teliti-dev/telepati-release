@@ -1,12 +1,7 @@
 ## Apa yang Baru
 
-- Halaman Overview SNMP dirombak jadi dashboard kesehatan jaringan: kartu ringkas device online/offline/belum pernah dicek, tabel device yang diurutkan problem-first (device offline/bermasalah muncul duluan), dan panduan 3 langkah kalau belum ada device yang mengaktifkan SNMP. Kesehatan proses poller-nya sendiri tetap ada, tapi digeser jadi info sekunder.
-- Tabel device di ACS, DNS, dan Hotspot Portal juga sekarang diurutkan problem-first, konsisten dengan halaman SNMP.
-- Title halaman lama di header/navbar dihapus dari ~40 halaman di seluruh aplikasi (akun, ACS, AI Chat, autentikasi, billing, captive portal, extension, hotspot, infrastruktur, lokasi, seller, seller admin, system services/settings, teknisi, workspace) — header sekarang murni navigasi, sesuai design system terbaru.
-
-## Bug Fixes
-
-- Halaman Overview ACS, DNS, dan Hotspot Portal masing-masing menampilkan status "Online" yang di-hardcode, tidak peduli apakah service-nya benar-benar berjalan atau tidak — sekarang menampilkan kesehatan proses yang sebenarnya (status aktif, CPU, memori, uptime), berubah merah kalau service-nya mati.
+- Cloudflare Tunnel: superadmin dapat mengaktifkan tunnel token-based (tanpa perlu `cloudflared tunnel login` interaktif) langsung dari `/system/cloudflare` — atur nama tunnel, token, dan ingress rules, lalu Telepati menerapkannya otomatis ke `cloudflared` di host. Instalasi baru maupun `telepati update apply` di host lama sama-sama otomatis menyiapkan wrapper script dan sudoers scope yang dibutuhkan; `telepati uninstall` membersihkannya kembali.
+- `cloudflared` sekarang berjalan sebagai user `telepati` yang unprivileged, bukan root.
 
 ## Breaking Changes
 

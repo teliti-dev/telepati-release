@@ -10,6 +10,18 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 ## [Unreleased]
 
 ### Added
+
+### Fixed
+
+### Changed
+
+### Removed
+
+---
+
+## [v0.1.0-alpha.12] — 2026-09-07
+
+### Added
 - Cloudflare Tunnel: superadmin dapat mengaktifkan tunnel token-based (tanpa perlu `cloudflared tunnel login` interaktif) langsung dari `/system/cloudflare` — atur nama tunnel, token, dan ingress rules, lalu Telepati menerapkannya otomatis ke `cloudflared` di host. Instalasi baru maupun `telepati update apply` di host lama sama-sama otomatis menyiapkan wrapper script dan sudoers scope yang dibutuhkan; `telepati uninstall` membersihkannya kembali.
 
 ### Fixed
@@ -211,7 +223,8 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
-[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.11...HEAD
+[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.12...HEAD
+[v0.1.0-alpha.12]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.11...v0.1.0-alpha.12
 [v0.1.0-alpha.11]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.10...v0.1.0-alpha.11
 [v0.1.0-alpha.10]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.9...v0.1.0-alpha.10
 [v0.1.0-alpha.9]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.8...v0.1.0-alpha.9
