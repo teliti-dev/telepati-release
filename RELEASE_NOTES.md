@@ -25,9 +25,14 @@ curl -fsSL https://raw.githubusercontent.com/teliti-dev/telepati-release/main/in
 
 ## Upgrade dari versi sebelumnya
 
+Khusus dari `v0.1.0-alpha.12` atau lebih lama, refresh CLI satu kali sebelum update:
+
 ```bash
+curl -fsSL https://raw.githubusercontent.com/teliti-dev/telepati-release/main/install.sh | sudo bash
 sudo telepati update apply
 ```
+
+Mulai alpha.13, CLI dan service memakai binary deployment yang sama sehingga release berikutnya cukup menjalankan `sudo telepati update apply`.
 
 ---
 

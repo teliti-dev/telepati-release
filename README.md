@@ -125,6 +125,12 @@ sudo telepati update rollback      # kembali ke binary versi sebelumnya
 
 `update apply` memperbarui bundle service, migration, dashboard, dan CLI sebagai satu versi. Semua artifact wajib lolos SHA256. Jika startup atau health check gagal, binary dan dashboard otomatis dikembalikan ke versi sebelumnya.
 
+> Upgrade satu kali dari alpha.12 atau lebih lama: jalankan kembali bootstrap CLI sebelum `update apply`, karena updater lama belum dapat memperbarui dirinya sendiri:
+> ```bash
+> curl -fsSL https://raw.githubusercontent.com/teliti-dev/telepati-release/main/install.sh | sudo bash
+> sudo telepati update apply
+> ```
+
 ---
 
 ### `telepati manage`
