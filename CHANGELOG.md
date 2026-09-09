@@ -19,6 +19,27 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.1.0-alpha.13] — 2026-09-09
+
+### Added
+- Seller account approval flow and private managed-file storage.
+- Redesigned billing, finance, package, account, dashboard, reporting, and display-preference experiences.
+
+### Fixed
+- `telepati manage migrate` now uses the migration engine embedded in the CLI and the absolute installed migration path; a separate `migrate` executable is no longer required.
+- `telepati update apply` now updates and verifies the dashboard together with every service binary, synchronizes the CLI version, and rolls binary/dashboard changes back when startup or health checks fail.
+- Fresh installs now keep `/usr/local/bin/telepati` linked to the deployed binary, preventing CLI and service versions from drifting apart.
+- Release selection now chooses the highest semantic prerelease instead of trusting GitHub API creation order.
+- Dashboard and service downloads now fail closed when their checksum is unavailable or invalid.
+- The bootstrap installer now supports the published ARMv7 artifact, and the documented pinned-version command actually passes the version through `sudo`.
+
+### Changed
+- Tag pushes now trigger the complete tested release pipeline, including dashboard checksum publication.
+
+### Removed
+
+---
+
 ## [v0.1.0-alpha.12] — 2026-09-07
 
 ### Added
@@ -223,7 +244,8 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
-[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.12...HEAD
+[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.13...HEAD
+[v0.1.0-alpha.13]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.12...v0.1.0-alpha.13
 [v0.1.0-alpha.12]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.11...v0.1.0-alpha.12
 [v0.1.0-alpha.11]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.10...v0.1.0-alpha.11
 [v0.1.0-alpha.10]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.9...v0.1.0-alpha.10

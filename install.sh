@@ -29,6 +29,7 @@ ARCH=$(uname -m)
 case "$ARCH" in
   x86_64)  ARCH="amd64" ;;
   aarch64) ARCH="arm64" ;;
+  armv7l)  ARCH="arm" ;;
   *) error "Arsitektur tidak didukung: $ARCH" ;;
 esac
 
@@ -40,7 +41,7 @@ done
 
 # ── Permission check ───────────────────────────────────────────────────────────
 if [ ! -w "$INSTALL_DIR" ] && [ "$EUID" -ne 0 ]; then
-  error "Butuh akses root untuk install ke ${INSTALL_DIR}.\nJalankan ulang dengan sudo:\n\n  curl -fsSL https://get.telepati.id | sudo bash\n"
+  error "Butuh akses root untuk install ke ${INSTALL_DIR}.\nJalankan ulang dengan sudo:\n\n  curl -fsSL https://raw.githubusercontent.com/teliti-dev/telepati-release/main/install.sh | sudo bash\n"
 fi
 
 # ── Resolve version ────────────────────────────────────────────────────────────
@@ -58,12 +59,13 @@ if [ "$VERSION" = "latest" ]; then
   if [ -z "$VERSION" ]; then
     VERSION=$(curl -fsSL "https://api.github.com/repos/${REPO}/releases" \
       | grep '"tag_name"' \
-      | head -1 \
-      | sed -E 's/.*"tag_name":[[:space:]]*"([^"]+)".*/\1/')
+      | sed -E 's/.*"tag_name":[[:space:]]*"([^"]+)".*/\1/' \
+      | sort -V \
+      | tail -1)
   fi
 
   [ -n "$VERSION" ] || \
-    error "Gagal mendapatkan versi terbaru. Cek koneksi internet, atau set versi secara manual:\n\n  TELEPATI_VERSION=v0.1.0-alpha.1 curl -fsSL https://get.telepati.id | sudo bash\n"
+    error "Gagal mendapatkan versi terbaru. Cek koneksi internet, atau set versi secara manual:\n\n  curl -fsSL https://raw.githubusercontent.com/teliti-dev/telepati-release/main/install.sh | sudo env TELEPATI_VERSION=v0.1.0-alpha.1 bash\n"
 fi
 
 # ── Header ─────────────────────────────────────────────────────────────────────

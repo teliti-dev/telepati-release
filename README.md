@@ -25,7 +25,7 @@ Repo ini cuma berisi artifact hasil build (binary + dashboard) — source code a
 Butuh server Ubuntu 22.04+ / Debian 12+ (bare-metal atau VM), akses root.
 
 ```bash
-curl -fsSL https://get.telepati.id | sudo bash
+curl -fsSL https://raw.githubusercontent.com/teliti-dev/telepati-release/main/install.sh | sudo bash
 sudo telepati install
 ```
 
@@ -47,7 +47,7 @@ Instalasi selesai dalam beberapa menit. Di akhir, installer menampilkan URL untu
 
 > **Selama fase alpha/beta** (belum ada release stable), pin versi secara eksplisit:
 > ```bash
-> TELEPATI_VERSION=v0.1.0-alpha.1 curl -fsSL https://get.telepati.id | sudo bash
+> curl -fsSL https://raw.githubusercontent.com/teliti-dev/telepati-release/main/install.sh | sudo env TELEPATI_VERSION=v0.1.0-alpha.1 bash
 > ```
 > Lihat versi terbaru di [Releases](https://github.com/teliti-dev/telepati-release/releases).
 
@@ -63,7 +63,7 @@ Setiap release berisi:
 
 | File | Deskripsi |
 |---|---|
-| `telepati_linux_{arch}.tar.gz` | **Satu archive gabungan** — semua 9 binary service (API server, SNMP worker, stream, AI agent, billing worker, ACS, isolir DNS/web, WhatsApp gateway) + `migrations/` |
+| `telepati_linux_{arch}.tar.gz` | **Satu archive gabungan** — 11 binary (API, DNS, isolir web, WhatsApp gateway, stream, SNMP, ACS, worker, AI agent, RADIUS, hotspot portal) + `migrations/` |
 | `dashboard_{version}.tar.gz` | Build frontend (dashboard SPA) |
 | `checksums.txt` | SHA256 checksum semua artifact |
 | `install.sh` | Script installer satu baris |
@@ -71,6 +71,7 @@ Setiap release berisi:
 Arsitektur yang didukung: `amd64`, `arm64`, `arm` (armv7).
 
 `telepati install` men-download satu archive ini dan memasang semua service sekaligus — tidak ada download binary satu-satu lagi.
+Binary CLI di `/usr/local/bin/telepati` kemudian diarahkan ke binary deployment yang sama di `/opt/telepati/telepati`, sehingga versi CLI dan service tidak dapat tertinggal satu sama lain saat update.
 
 ---
 
@@ -78,7 +79,7 @@ Arsitektur yang didukung: `amd64`, `arm64`, `arm` (armv7).
 
 ### `telepati install`
 
-Install seluruh stack Telepati (API server + 8 service pendukung) sebagai systemd service.
+Install seluruh stack Telepati (API server, seluruh service pendukung, dan WhatsApp gateway) secara otomatis.
 
 ```bash
 sudo telepati install
@@ -121,6 +122,8 @@ sudo telepati update apply         # update ke versi terbaru
 sudo telepati update apply --version v0.2.0   # update ke versi spesifik
 sudo telepati update rollback      # kembali ke binary versi sebelumnya
 ```
+
+`update apply` memperbarui bundle service, migration, dashboard, dan CLI sebagai satu versi. Semua artifact wajib lolos SHA256. Jika startup atau health check gagal, binary dan dashboard otomatis dikembalikan ke versi sebelumnya.
 
 ---
 

@@ -1,7 +1,15 @@
 ## Apa yang Baru
 
-- Cloudflare Tunnel: superadmin dapat mengaktifkan tunnel token-based (tanpa perlu `cloudflared tunnel login` interaktif) langsung dari `/system/cloudflare` — atur nama tunnel, token, dan ingress rules, lalu Telepati menerapkannya otomatis ke `cloudflared` di host. Instalasi baru maupun `telepati update apply` di host lama sama-sama otomatis menyiapkan wrapper script dan sudoers scope yang dibutuhkan; `telepati uninstall` membersihkannya kembali.
-- `cloudflared` sekarang berjalan sebagai user `telepati` yang unprivileged, bukan root.
+- Alur approval akun seller dan penyimpanan file privat terkelola.
+- Pengalaman dashboard, billing/finance, pelanggan, paket, laporan, dan pengaturan tampilan yang diperbarui.
+- Installer, migrasi, update, dan rollback kini berjalan sebagai satu alur zero-touch yang terverifikasi checksum.
+
+## Perbaikan Upgrade
+
+- `telepati manage migrate` tidak lagi membutuhkan executable eksternal.
+- `telepati update apply` memperbarui service, dashboard, dan CLI ke versi yang sama.
+- Kegagalan startup atau health check mengembalikan binary dan dashboard otomatis.
+- Pemilihan versi alpha/beta mengikuti semantic version tertinggi.
 
 ## Breaking Changes
 
