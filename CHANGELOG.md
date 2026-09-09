@@ -19,6 +19,19 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.1.0-alpha.18] — 2026-09-09
+
+### Added
+
+### Fixed
+- Package installation now waits and retries for up to five minutes when Ubuntu's `unattended-upgrades` temporarily owns the apt/dpkg lock, preventing fresh installs on newly provisioned hosts from requiring a manual rerun.
+
+### Changed
+
+### Removed
+
+---
+
 ## [v0.1.0-alpha.17] — 2026-09-09
 
 ### Added
@@ -298,7 +311,8 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
-[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.17...HEAD
+[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.18...HEAD
+[v0.1.0-alpha.18]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.17...v0.1.0-alpha.18
 [v0.1.0-alpha.17]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.16...v0.1.0-alpha.17
 [v0.1.0-alpha.16]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.15...v0.1.0-alpha.16
 [v0.1.0-alpha.15]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.14...v0.1.0-alpha.15
