@@ -1,5 +1,8 @@
 ## Apa yang Baru
 
+- Wizard baru `sudo telepati setup` memandu setup admin/workspace, Cloudflare Tunnel opsional, dan VLAN workspace langsung dari terminal.
+- Parent interface VLAN dideteksi otomatis dari default route; subnet dapat dipilih otomatis, sedangkan VLAN ID tetap mengikuti trunk switch/router Anda.
+- Wizard aman dijalankan ulang dan memakai workspace yang sudah ada tanpa menduplikasi interface atau rule DNAT.
 - Alur approval akun seller dan penyimpanan file privat terkelola.
 - Pengalaman dashboard, billing/finance, pelanggan, paket, laporan, dan pengaturan tampilan yang diperbarui.
 - Installer, migrasi, update, dan rollback kini berjalan sebagai satu alur zero-touch yang terverifikasi checksum.
@@ -29,6 +32,8 @@ Tidak ada breaking changes pada release ini.
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/teliti-dev/telepati-release/main/install.sh | sudo bash
+sudo telepati install
+sudo telepati setup
 ```
 
 ## Upgrade dari versi sebelumnya

@@ -37,12 +37,12 @@ Langkah pertama men-download CLI `telepati` ke `/usr/local/bin`. Langkah kedua m
 - Download dan pasang semua service Telepati (API, SNMP worker, stream, AI agent, billing worker, ACS, isolir DNS/web, WhatsApp gateway) sebagai systemd unit
 - Enable + start semua service, lalu tunggu sampai health check lolos
 
-Instalasi selesai dalam beberapa menit. Di akhir, installer menampilkan URL untuk lanjut ke langkah berikutnya:
+Instalasi selesai dalam beberapa menit. Di akhir, jalankan wizard konfigurasi:
 
 ```
 [✓] Telepati berhasil diinstall!
 
-  Buka http://<ip-server-anda>:8080 untuk menyelesaikan setup (buat akun admin & workspace pertama).
+sudo telepati setup
 ```
 
 > **Selama fase alpha/beta** (belum ada release stable), pin versi secara eksplisit:
@@ -53,9 +53,9 @@ Instalasi selesai dalam beberapa menit. Di akhir, installer menampilkan URL untu
 
 ## Setup akun admin & workspace
 
-Buka `http://<ip-server>:8080` di browser — akan otomatis diarahkan ke layar setup. Isi nama, email, password admin, dan nama workspace pertama Anda, lalu login. Setelah ini selesai, layar setup tidak akan muncul lagi (satu kali saja, per instalasi).
+Jalankan `sudo telepati setup`. Wizard memandu tiga tahap: membuat admin/workspace atau memilih workspace yang sudah ada, menghubungkan Cloudflare Tunnel (opsional), dan membuat VLAN workspace. Parent interface dideteksi otomatis, subnet dapat dipilih otomatis, dan VLAN ID diisi sesuai trunk switch/router.
 
-Instalasi default belum punya domain/HTTPS — dashboard diakses langsung via IP + port. Untuk pasang domain dan HTTPS otomatis (Let's Encrypt) atau Cloudflare Tunnel, konfigurasi lewat [`telepati config`](#telepati-config) setelah setup selesai.
+Wizard aman dijalankan ulang dan konfigurasi VLAN yang sama tidak diduplikasi. Setup admin/workspace lewat browser di `http://<ip-server>:8080` tetap tersedia sebagai alternatif; Cloudflare dan VLAN tetap dikonfigurasi lewat wizard CLI.
 
 ## Artifacts
 
@@ -97,7 +97,7 @@ sudo telepati install --version v0.1.0-alpha.1   # pin ke versi tertentu
 | Akses | `http://<ip-server-terdeteksi>:8080` — tanpa Caddy/domain/HTTPS |
 | Frontend | Dashboard SPA dipasang lokal, di-serve dari binary yang sama |
 
-**Akun admin dan workspace pertama dibuat lewat browser** (layar setup satu kali di dashboard — lihat [di atas](#setup-akun-admin--workspace)), bukan lewat CLI.
+Sesudah instalasi, jalankan `sudo telepati setup`. Setup admin/workspace lewat browser tetap tersedia sebagai alternatif.
 
 #### File yang dibuat
 

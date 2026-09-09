@@ -19,6 +19,22 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.1.0-alpha.21] — 2026-09-09
+
+### Added
+- `sudo telepati setup`, an interactive three-stage post-install wizard for the first admin/workspace, optional Cloudflare Tunnel connection, and per-workspace VLAN provisioning.
+- Automatic parent-interface detection from the server default route and automatic selection of an unused `10.50.<slot>.0/24` VLAN subnet.
+
+### Fixed
+- Re-running setup now safely selects an existing workspace and re-applies an identical VLAN without creating duplicate database records, interfaces, or DNAT rules.
+
+### Changed
+- Fresh-install completion now recommends the CLI setup wizard while retaining browser setup as an alternative for admin/workspace creation.
+
+### Removed
+
+---
+
 ## [v0.1.0-alpha.20] — 2026-09-09
 
 ### Added
