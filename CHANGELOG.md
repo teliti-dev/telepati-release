@@ -19,6 +19,19 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.1.0-alpha.15] — 2026-09-09
+
+### Added
+
+### Fixed
+- Upgrades from releases predating managed-file storage now create `/var/lib/telepati/files` with the required `telepati:telepati` ownership before starting the new service. This prevents an otherwise healthy legacy install from failing its post-update health check and rolling back.
+
+### Changed
+
+### Removed
+
+---
+
 ## [v0.1.0-alpha.14] — 2026-09-09
 
 ### Added
@@ -257,7 +270,8 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
-[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.14...HEAD
+[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.15...HEAD
+[v0.1.0-alpha.15]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.14...v0.1.0-alpha.15
 [v0.1.0-alpha.14]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.13...v0.1.0-alpha.14
 [v0.1.0-alpha.13]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.12...v0.1.0-alpha.13
 [v0.1.0-alpha.12]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.11...v0.1.0-alpha.12
