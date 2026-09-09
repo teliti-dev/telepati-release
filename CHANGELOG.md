@@ -19,6 +19,20 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.1.0-alpha.19] — 2026-09-09
+
+### Added
+
+### Fixed
+- The bare-metal installer no longer invents service IP aliases on the server's primary interface. Isolir Web and Hotspot Portal use the server's real private IP as backend listeners on ports 80 and 8082; per-workspace VLAN/WireGuard provisioning remains the sole owner of dedicated service IPs and DNAT rules.
+- Updating from an affected release removes the legacy primary-interface aliases and systemd helper, then normalizes backend bindings automatically. This prevents cloud gateway addresses such as subnet `.1` from being shadowed locally.
+
+### Changed
+
+### Removed
+
+---
+
 ## [v0.1.0-alpha.18] — 2026-09-09
 
 ### Added
@@ -311,7 +325,8 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
-[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.18...HEAD
+[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.19...HEAD
+[v0.1.0-alpha.19]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.18...v0.1.0-alpha.19
 [v0.1.0-alpha.18]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.17...v0.1.0-alpha.18
 [v0.1.0-alpha.17]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.16...v0.1.0-alpha.17
 [v0.1.0-alpha.16]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.15...v0.1.0-alpha.16

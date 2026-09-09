@@ -6,6 +6,7 @@
 
 ## Perbaikan Upgrade
 
+- Installer tidak lagi membuat alias IP pada interface utama server. IP khusus service tetap dibuat oleh provisioning VLAN/WireGuard per workspace; backend Isolir dan Hotspot memakai private IP server pada port berbeda.
 - Fresh install pada OS baru otomatis menunggu dan mencoba ulang jika `unattended-upgrades` masih memegang lock apt/dpkg.
 - Isolir Web dan Hotspot Portal tidak lagi berebut port 80 ketika VPS tidak mendukung IP alias; installer memakai fallback port 8082 dan updater memperbaiki instalasi alpha.16 yang terdampak secara otomatis.
 - Fresh install membuat private managed-file storage dengan mode `0750`, konsisten dengan host yang di-upgrade.
