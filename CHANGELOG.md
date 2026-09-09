@@ -19,6 +19,19 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.1.0-alpha.14] — 2026-09-09
+
+### Added
+
+### Fixed
+- Updater now compares the target release against `installed_version` in `state.db`, not the bootstrap CLI's own version. This makes the documented alpha.12 transition correctly detect and deploy the newer service/dashboard after refreshing the CLI.
+
+### Changed
+
+### Removed
+
+---
+
 ## [v0.1.0-alpha.13] — 2026-09-09
 
 ### Added
@@ -244,7 +257,8 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
-[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.13...HEAD
+[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.14...HEAD
+[v0.1.0-alpha.14]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.13...v0.1.0-alpha.14
 [v0.1.0-alpha.13]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.12...v0.1.0-alpha.13
 [v0.1.0-alpha.12]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.11...v0.1.0-alpha.12
 [v0.1.0-alpha.11]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.10...v0.1.0-alpha.11

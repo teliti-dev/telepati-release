@@ -6,6 +6,7 @@
 
 ## Perbaikan Upgrade
 
+- Update check sekarang membaca versi deployment aktual dari `state.db`, sehingga refresh CLI dari alpha.12 tidak lagi membuat updater salah menganggap service lama sudah terbaru.
 - `telepati manage migrate` tidak lagi membutuhkan executable eksternal.
 - `telepati update apply` memperbarui service, dashboard, dan CLI ke versi yang sama.
 - Kegagalan startup atau health check mengembalikan binary dan dashboard otomatis.
