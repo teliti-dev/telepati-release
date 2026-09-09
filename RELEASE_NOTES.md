@@ -6,6 +6,7 @@
 
 ## Perbaikan Upgrade
 
+- Fresh install membuat private managed-file storage dengan mode `0750`, konsisten dengan host yang di-upgrade.
 - Host lama sekarang otomatis memperoleh direktori private managed-file dengan ownership dan permission yang benar sebelum service versi baru dijalankan.
 - Update check sekarang membaca versi deployment aktual dari `state.db`, sehingga refresh CLI dari alpha.12 tidak lagi membuat updater salah menganggap service lama sudah terbaru.
 - `telepati manage migrate` tidak lagi membutuhkan executable eksternal.

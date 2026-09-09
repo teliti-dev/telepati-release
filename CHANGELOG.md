@@ -19,6 +19,19 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.1.0-alpha.16] — 2026-09-09
+
+### Added
+
+### Fixed
+- Fresh installs now create private managed-file storage with mode `0750`, matching upgraded installations, and no longer print duplicate progress rows while creating writable storage directories.
+
+### Changed
+
+### Removed
+
+---
+
 ## [v0.1.0-alpha.15] — 2026-09-09
 
 ### Added
@@ -270,7 +283,8 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
-[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.15...HEAD
+[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.16...HEAD
+[v0.1.0-alpha.16]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.15...v0.1.0-alpha.16
 [v0.1.0-alpha.15]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.14...v0.1.0-alpha.15
 [v0.1.0-alpha.14]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.13...v0.1.0-alpha.14
 [v0.1.0-alpha.13]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.12...v0.1.0-alpha.13
