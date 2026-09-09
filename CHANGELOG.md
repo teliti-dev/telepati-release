@@ -19,6 +19,21 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.1.0-alpha.17] — 2026-09-09
+
+### Added
+
+### Fixed
+- Fresh installs no longer fail when the host cannot attach two secondary IP aliases. Isolir Web and Hotspot Portal now select collision-free bindings for zero, one, or two available aliases, falling back to the local IP on port `8082` when needed.
+- Alias addresses are only persisted after the kernel successfully attaches them; failed `ip addr add` operations can no longer produce unusable service configuration.
+- Updating an affected alpha.16 installation automatically adds the collision-safe Hotspot Portal binding before required services are restarted and verified.
+
+### Changed
+
+### Removed
+
+---
+
 ## [v0.1.0-alpha.16] — 2026-09-09
 
 ### Added
@@ -283,7 +298,8 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
-[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.16...HEAD
+[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.17...HEAD
+[v0.1.0-alpha.17]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.16...v0.1.0-alpha.17
 [v0.1.0-alpha.16]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.15...v0.1.0-alpha.16
 [v0.1.0-alpha.15]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.14...v0.1.0-alpha.15
 [v0.1.0-alpha.14]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.13...v0.1.0-alpha.14
