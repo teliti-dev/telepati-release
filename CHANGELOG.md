@@ -19,6 +19,20 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.1.0-alpha.20] — 2026-09-09
+
+### Added
+
+### Fixed
+- Refresh cookies now follow the browser's effective scheme: plain-IP HTTP installs retain sessions across reloads, while Cloudflare/Caddy HTTPS requests still receive `Secure` cookies.
+- Workspace VLAN Hotspot addresses now expose standard port 80 and DNAT to the backend's collision-free port 8082; public workspace service ports are no longer coupled to backend listener ports.
+
+### Changed
+
+### Removed
+
+---
+
 ## [v0.1.0-alpha.19] — 2026-09-09
 
 ### Added
@@ -325,7 +339,8 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
-[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.19...HEAD
+[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.20...HEAD
+[v0.1.0-alpha.20]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.19...v0.1.0-alpha.20
 [v0.1.0-alpha.19]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.18...v0.1.0-alpha.19
 [v0.1.0-alpha.18]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.17...v0.1.0-alpha.18
 [v0.1.0-alpha.17]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.16...v0.1.0-alpha.17

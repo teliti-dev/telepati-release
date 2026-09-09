@@ -6,6 +6,8 @@
 
 ## Perbaikan Upgrade
 
+- Sesi login kini tetap aktif setelah refresh pada akses HTTP via IP; koneksi HTTPS melalui Cloudflare/Caddy tetap memakai cookie `Secure`.
+- IP Hotspot pada VLAN workspace tetap melayani port 80 dan diteruskan ke backend port 8082 secara otomatis.
 - Installer tidak lagi membuat alias IP pada interface utama server. IP khusus service tetap dibuat oleh provisioning VLAN/WireGuard per workspace; backend Isolir dan Hotspot memakai private IP server pada port berbeda.
 - Fresh install pada OS baru otomatis menunggu dan mencoba ulang jika `unattended-upgrades` masih memegang lock apt/dpkg.
 - Isolir Web dan Hotspot Portal tidak lagi berebut port 80 ketika VPS tidak mendukung IP alias; installer memakai fallback port 8082 dan updater memperbaiki instalasi alpha.16 yang terdampak secara otomatis.
