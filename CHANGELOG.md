@@ -19,6 +19,20 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.1.0-alpha.22] — 2026-09-09
+
+### Added
+
+### Fixed
+- Workspace VLAN provisioning now writes a dedicated high-priority systemd-networkd policy. Netplan's catch-all DHCP profile can no longer claim a newly created VLAN and flush its gateway and service addresses after the setup wizard reports success.
+- Removing a workspace VLAN also removes and reloads its dedicated networkd policy.
+
+### Changed
+
+### Removed
+
+---
+
 ## [v0.1.0-alpha.21] — 2026-09-09
 
 ### Added

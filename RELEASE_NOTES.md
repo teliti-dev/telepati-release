@@ -9,6 +9,7 @@
 
 ## Perbaikan Upgrade
 
+- VLAN workspace kini memiliki policy systemd-networkd sendiri, sehingga konfigurasi DHCP catch-all dari Netplan tidak dapat menghapus gateway dan IP service beberapa saat setelah wizard selesai.
 - Sesi login kini tetap aktif setelah refresh pada akses HTTP via IP; koneksi HTTPS melalui Cloudflare/Caddy tetap memakai cookie `Secure`.
 - IP Hotspot pada VLAN workspace tetap melayani port 80 dan diteruskan ke backend port 8082 secara otomatis.
 - Installer tidak lagi membuat alias IP pada interface utama server. IP khusus service tetap dibuat oleh provisioning VLAN/WireGuard per workspace; backend Isolir dan Hotspot memakai private IP server pada port berbeda.
