@@ -19,6 +19,13 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.1.0-alpha.27] — 2026-09-10
+
+### Fixed
+- A rejected stream channel subscribe (SSH session already occupied, device not found, viewer role forbidden) used to be silently dropped by the frontend, leaving the SSH Terminal on "connecting" forever with no error shown. The server now attaches the channel to a subscribe-rejection error and the frontend routes it to that channel's subscriber, same as any other event.
+
+---
+
 ## [v0.1.0-alpha.26] — 2026-09-10
 
 ### Fixed
