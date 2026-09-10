@@ -19,6 +19,27 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.1.0-alpha.23] — 2026-09-10
+
+### Added
+- Persistent host-only `telepati-core` dummy interface at `10.255.255.1/32` for device-facing backend listeners.
+- DNS-over-TCP support alongside the existing DNS-over-UDP listener.
+- Separate private RADIUS authentication and accounting listeners.
+
+### Fixed
+- Workspace VLAN ACS address now forwards TCP 7547 to the ACS backend.
+- Workspace VLAN DNS address now forwards both UDP and TCP port 53.
+- Reconciliation removes stale DNAT rules targeting an old management address before installing replacement rules.
+
+### Changed
+- All device-facing services bind the private backend address on custom ports. MikroTik-facing VLAN addresses retain the standard protocol ports.
+- The setup wizard reconciles existing VLAN units and backend bindings idempotently.
+
+### Removed
+- Device-service DNAT targets on the server's primary management/DHCP address.
+
+---
+
 ## [v0.1.0-alpha.22] — 2026-09-09
 
 ### Added
