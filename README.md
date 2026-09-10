@@ -17,6 +17,7 @@ Repo ini cuma berisi artifact hasil build (binary + dashboard) — source code a
   - [Perintah level atas](#perintah-level-atas)
 - [Konfigurasi](#konfigurasi)
 - [Troubleshooting](#troubleshooting)
+- [E2E Verification Reports](#e2e-verification-reports)
 
 ---
 
@@ -266,3 +267,9 @@ rm /etc/systemd/system/telepati-wg.service /etc/wireguard/telepati.conf
 ## Dokumentasi
 
 Dokumentasi lengkap di [docs.telepati.id](https://docs.telepati.id).
+
+## E2E Verification Reports
+
+Laporan hasil verifikasi end-to-end pada instalasi/perangkat nyata (dengan screenshot), ditulis setiap kali ada perubahan yang cukup signifikan untuk diuji ulang dari nol:
+
+- [2026-09-10 — Fresh install v0.1.0-alpha.24 + onboarding MikroTik real](docs/e2e-verification/2026-09-10-fresh-install-mikrotik-onboarding.md)
