@@ -19,6 +19,13 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.1.0-alpha.28] — 2026-09-10
+
+### Fixed
+- SSH Terminal now actually works on bare-metal installs — it previously scoped every device lookup to a Cloud-mode-only claim that's always empty on the standalone deployment this product ships, so no device could ever be found (surfaced as "device not found or access denied" once the alpha.27 error-routing fix made it visible at all). Now resolves the device's real workspace and checks the requesting user's actual membership in it, the same way the REST API already does.
+
+---
+
 ## [v0.1.0-alpha.27] — 2026-09-10
 
 ### Fixed

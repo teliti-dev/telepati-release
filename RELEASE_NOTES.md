@@ -6,6 +6,7 @@
 
 - Sesi login sekarang tetap bertahan pada instalasi yang memisahkan dashboard dan API ke domain terdaftar berbeda (mis. lewat Cloudflare Tunnel dengan hostname API terpisah) — termasuk kasus subdomain di bawah domain second-level yang berstatus public suffix seperti `my.id`. Sebelumnya login awal berhasil tapi refresh token diam-diam gagal begitu access token pertama kali kedaluwarsa (~15 menit), membuat semua aksi berikutnya gagal 401 tanpa pesan error yang jelas.
 - SSH Terminal tidak lagi macet selamanya di "Menghubungkan..." saat sesi ditolak server (device tidak ditemukan, sesi sudah dipakai tab/user lain, role viewer tidak diizinkan) — pesan error sekarang benar-benar ditampilkan ke pengguna.
+- SSH Terminal sekarang benar-benar bisa dipakai — sebelumnya SELALU gagal "device not found or access denied" untuk device manapun di instalasi bare-metal (satu-satunya mode deployment produk ini), karena salah pakai klaim token yang memang selalu kosong sebagai filter workspace.
 
 ## Keamanan
 
