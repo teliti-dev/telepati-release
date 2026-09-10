@@ -1,6 +1,6 @@
 ## Apa yang Baru
 
-Release kecil (patch keamanan) menyusul alpha.23 — tidak ada fitur baru.
+- `telepati install --domain <ip-atau-host>` — override manual IP/domain akses instalasi, tidak lagi bergantung sepenuhnya pada deteksi otomatis IP publik. Berguna untuk instalasi yang cuma boleh diakses lewat jaringan privat (mis. LXC container di belakang NAT ISP), di mana IP publik hasil deteksi otomatis bukan yang ingin dipakai operator.
 
 ## Keamanan
 

@@ -19,6 +19,13 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.1.0-alpha.25] — 2026-09-10
+
+### Added
+- `telepati install --domain <ip-or-host>` overrides the auto-detected install IP — needed on hosts (e.g. an LXC container behind an ISP's NAT) where the automatic public-IP lookup returns an address that isn't the one the operator wants to manage the instance from.
+
+---
+
 ## [v0.1.0-alpha.24] — 2026-09-10
 
 ### Fixed
