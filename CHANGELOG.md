@@ -19,6 +19,13 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.1.0-alpha.24] — 2026-09-10
+
+### Fixed
+- Stream service (`telepati-stream`) WebSocket handshake now enforces the `ALLOWED_ORIGINS` allowlist instead of accepting any origin — needed now that this service can be exposed on its own public hostname (e.g. a dedicated Cloudflare Tunnel ingress rule) rather than only reachable behind a same-origin reverse-proxy path prefix.
+
+---
+
 ## [v0.1.0-alpha.23] — 2026-09-10
 
 ### Added

@@ -1,12 +1,10 @@
 ## Apa yang Baru
 
-- Wizard baru `sudo telepati setup` memandu setup admin/workspace, Cloudflare Tunnel opsional, dan VLAN workspace langsung dari terminal.
-- Parent interface VLAN dideteksi otomatis dari default route; subnet dapat dipilih otomatis, sedangkan VLAN ID tetap mengikuti trunk switch/router Anda.
-- Wizard aman dijalankan ulang dan memakai workspace yang sudah ada tanpa menduplikasi interface atau rule DNAT.
-- Service VLAN kini selalu memakai port standar dari sisi MikroTik, lalu DNAT ke IP backend internal `10.255.255.1` dengan port custom yang bebas konflik.
-- Alur approval akun seller dan penyimpanan file privat terkelola.
-- Pengalaman dashboard, billing/finance, pelanggan, paket, laporan, dan pengaturan tampilan yang diperbarui.
-- Installer, migrasi, update, dan rollback kini berjalan sebagai satu alur zero-touch yang terverifikasi checksum.
+Release kecil (patch keamanan) menyusul alpha.23 — tidak ada fitur baru.
+
+## Keamanan
+
+- Handshake WebSocket service stream (`telepati-stream`) sekarang menegakkan allowlist `ALLOWED_ORIGINS`, bukan menerima semua origin. Ini diperlukan begitu stream service diekspos lewat hostname publiknya sendiri (mis. ingress rule Cloudflare Tunnel khusus), bukan lagi hanya lewat path reverse-proxy satu origin dengan dashboard/API.
 
 ## Perbaikan Upgrade
 
