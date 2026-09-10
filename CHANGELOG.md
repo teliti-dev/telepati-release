@@ -19,6 +19,13 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.1.0-alpha.26] — 2026-09-10
+
+### Fixed
+- Refresh-token cookie now sets `SameSite=None` (when Secure) instead of always `Strict`, so it survives across a dashboard/API split on different registrable domains — including subdomains of a public-suffix second-level domain (e.g. `api.foo.my.id` and `foo.my.id`, since `my.id` itself is the registrable suffix). Previously login worked but every subsequent silent token refresh failed once the access token expired, surfacing as unexplained 401s on any action taken more than ~15 minutes into a session.
+
+---
+
 ## [v0.1.0-alpha.25] — 2026-09-10
 
 ### Added

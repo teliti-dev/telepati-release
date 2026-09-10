@@ -2,6 +2,10 @@
 
 - `telepati install --domain <ip-atau-host>` — override manual IP/domain akses instalasi, tidak lagi bergantung sepenuhnya pada deteksi otomatis IP publik. Berguna untuk instalasi yang cuma boleh diakses lewat jaringan privat (mis. LXC container di belakang NAT ISP), di mana IP publik hasil deteksi otomatis bukan yang ingin dipakai operator.
 
+## Perbaikan
+
+- Sesi login sekarang tetap bertahan pada instalasi yang memisahkan dashboard dan API ke domain terdaftar berbeda (mis. lewat Cloudflare Tunnel dengan hostname API terpisah) — termasuk kasus subdomain di bawah domain second-level yang berstatus public suffix seperti `my.id`. Sebelumnya login awal berhasil tapi refresh token diam-diam gagal begitu access token pertama kali kedaluwarsa (~15 menit), membuat semua aksi berikutnya gagal 401 tanpa pesan error yang jelas.
+
 ## Keamanan
 
 - Handshake WebSocket service stream (`telepati-stream`) sekarang menegakkan allowlist `ALLOWED_ORIGINS`, bukan menerima semua origin. Ini diperlukan begitu stream service diekspos lewat hostname publiknya sendiri (mis. ingress rule Cloudflare Tunnel khusus), bukan lagi hanya lewat path reverse-proxy satu origin dengan dashboard/API.
