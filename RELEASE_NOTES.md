@@ -1,35 +1,12 @@
 ## Apa yang Baru
 
-- `telepati install --domain <ip-atau-host>` — override manual IP/domain akses instalasi, tidak lagi bergantung sepenuhnya pada deteksi otomatis IP publik. Berguna untuk instalasi yang cuma boleh diakses lewat jaringan privat (mis. LXC container di belakang NAT ISP), di mana IP publik hasil deteksi otomatis bukan yang ingin dipakai operator.
+- **DNS Redirect**: konfigurasi DNS per-workspace terpisah dari Isolir (upstream servers, cache, query log), redirect rules generik berdasarkan subnet/account/address_list/all, log aktivitas query, dan metrics time-series. Layanan DNS (`telepati-dns`) sekarang benar-benar forward query ke upstream untuk domain yang tidak match rule, bukan cuma redirect Isolir seperti sebelumnya.
+- **Captive Portal Campaign**: CRUD campaign lengkap dengan lifecycle (publish/pause/resume/archive), upload creative asset, endpoint runtime untuk resolve campaign & catat event (impression/click/login/redeem) dari portal, serta analytics ringkasan dan per-campaign.
+- **ACS Advanced Management**: dashboard summary, fault log otomatis dari command TR-069 yang gagal, device task (reboot/factory-reset/download/refresh/get-set-parameter) beserta bulk operation ke banyak device sekaligus, preset & provision & virtual parameter (dengan validasi script), managed file khusus ACS, konfigurasi ACS per-workspace, dan audit log untuk semua perubahan.
 
-## Perbaikan
+## Bug Fixes
 
-- Sesi login sekarang tetap bertahan pada instalasi yang memisahkan dashboard dan API ke domain terdaftar berbeda (mis. lewat Cloudflare Tunnel dengan hostname API terpisah) — termasuk kasus subdomain di bawah domain second-level yang berstatus public suffix seperti `my.id`. Sebelumnya login awal berhasil tapi refresh token diam-diam gagal begitu access token pertama kali kedaluwarsa (~15 menit), membuat semua aksi berikutnya gagal 401 tanpa pesan error yang jelas.
-- SSH Terminal tidak lagi macet selamanya di "Menghubungkan..." saat sesi ditolak server (device tidak ditemukan, sesi sudah dipakai tab/user lain, role viewer tidak diizinkan) — pesan error sekarang benar-benar ditampilkan ke pengguna.
-- SSH Terminal sekarang benar-benar bisa dipakai — sebelumnya SELALU gagal "device not found or access denied" untuk device manapun di instalasi bare-metal (satu-satunya mode deployment produk ini), karena salah pakai klaim token yang memang selalu kosong sebagai filter workspace.
-
-## Keamanan
-
-- Handshake WebSocket service stream (`telepati-stream`) sekarang menegakkan allowlist `ALLOWED_ORIGINS`, bukan menerima semua origin. Ini diperlukan begitu stream service diekspos lewat hostname publiknya sendiri (mis. ingress rule Cloudflare Tunnel khusus), bukan lagi hanya lewat path reverse-proxy satu origin dengan dashboard/API.
-
-## Perbaikan Upgrade
-
-- VLAN workspace kini memiliki policy systemd-networkd sendiri, sehingga konfigurasi DHCP catch-all dari Netplan tidak dapat menghapus gateway dan IP service beberapa saat setelah wizard selesai.
-- Target DNAT tidak lagi memakai IP management/DHCP server. Interface dummy `telepati-core` menyediakan backend persisten yang tidak diekspos ke jaringan management.
-- Mapping VLAN sekarang lengkap: RADIUS auth/accounting, ACS, DNS UDP/TCP, Isolir Web, dan Hotspot Portal.
-- RADIUS mempunyai listener backend terpisah untuk authentication dan accounting; DNS Isolir sekarang mendukung transport UDP maupun TCP.
-- Sesi login kini tetap aktif setelah refresh pada akses HTTP via IP; koneksi HTTPS melalui Cloudflare/Caddy tetap memakai cookie `Secure`.
-- IP Hotspot pada VLAN workspace tetap melayani port 80 dan diteruskan ke backend port 8082 secara otomatis.
-- Installer tidak lagi membuat alias IP atau listener service pada interface utama server. IP khusus service dibuat pada VLAN per workspace dan backend memakai interface internal khusus.
-- Fresh install pada OS baru otomatis menunggu dan mencoba ulang jika `unattended-upgrades` masih memegang lock apt/dpkg.
-- Isolir Web dan Hotspot Portal tidak lagi berebut port 80 ketika VPS tidak mendukung IP alias; installer memakai fallback port 8082 dan updater memperbaiki instalasi alpha.16 yang terdampak secara otomatis.
-- Fresh install membuat private managed-file storage dengan mode `0750`, konsisten dengan host yang di-upgrade.
-- Host lama sekarang otomatis memperoleh direktori private managed-file dengan ownership dan permission yang benar sebelum service versi baru dijalankan.
-- Update check sekarang membaca versi deployment aktual dari `state.db`, sehingga refresh CLI dari alpha.12 tidak lagi membuat updater salah menganggap service lama sudah terbaru.
-- `telepati manage migrate` tidak lagi membutuhkan executable eksternal.
-- `telepati update apply` memperbarui service, dashboard, dan CLI ke versi yang sama.
-- Kegagalan startup atau health check mengembalikan binary dan dashboard otomatis.
-- Pemilihan versi alpha/beta mengikuti semantic version tertinggi.
+- Isolir: menghapus template yang sedang aktif sekarang mengembalikan error yang jelas (409, bukan 400 generik), dan menghapus template yang tidak ada/beda workspace mengembalikan 404.
 
 ## Breaking Changes
 
@@ -40,21 +17,16 @@ Tidak ada breaking changes pada release ini.
 ## Instalasi
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/teliti-dev/telepati-release/main/install.sh | sudo bash
-sudo telepati install
-sudo telepati setup
+curl -fsSL https://get.telepati.id/install.sh | sudo bash
 ```
 
 ## Upgrade dari versi sebelumnya
 
-Khusus dari `v0.1.0-alpha.12` atau lebih lama, refresh CLI satu kali sebelum update:
-
 ```bash
-curl -fsSL https://raw.githubusercontent.com/teliti-dev/telepati-release/main/install.sh | sudo bash
-sudo telepati update apply
+sudo telepati update
 ```
 
-Mulai alpha.13, CLI dan service memakai binary deployment yang sama sehingga release berikutnya cukup menjalankan `sudo telepati update apply`.
+Migration database berjalan otomatis saat service restart pasca-upgrade.
 
 ---
 

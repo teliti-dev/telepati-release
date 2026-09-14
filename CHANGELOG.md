@@ -19,6 +19,22 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.4.0] — 2026-09-14
+
+### Added
+- **DNS Redirect**: konfigurasi DNS per-workspace terpisah dari Isolir (upstream servers, cache, query log), redirect rules generik berdasarkan subnet/account/address_list/all, log aktivitas query, dan metrics time-series. Layanan DNS (`telepati-dns`) sekarang benar-benar forward query ke upstream untuk domain yang tidak match rule, bukan cuma redirect Isolir seperti sebelumnya.
+- **Captive Portal Campaign**: CRUD campaign lengkap dengan lifecycle (publish/pause/resume/archive), upload creative asset, endpoint runtime untuk resolve campaign & catat event (impression/click/login/redeem) dari portal, serta analytics ringkasan dan per-campaign.
+- **ACS Advanced Management**: dashboard summary, fault log otomatis dari command TR-069 yang gagal, device task (reboot/factory-reset/download/refresh/get-set-parameter) beserta bulk operation ke banyak device sekaligus, preset & provision & virtual parameter (dengan validasi script), managed file khusus ACS, konfigurasi ACS per-workspace, dan audit log untuk semua perubahan.
+
+### Fixed
+- Isolir: menghapus template yang sedang aktif sekarang mengembalikan error yang jelas (409, bukan 400 generik), dan menghapus template yang tidak ada/beda workspace mengembalikan 404.
+
+### Changed
+
+### Removed
+
+---
+
 ## [v0.1.0-alpha.28] — 2026-09-10
 
 ### Fixed
@@ -425,7 +441,8 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
-[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.20...HEAD
+[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.4.0...HEAD
+[v0.4.0]: https://github.com/teliti-dev/telepati-release/compare/v0.3.0...v0.4.0
 [v0.1.0-alpha.20]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.19...v0.1.0-alpha.20
 [v0.1.0-alpha.19]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.18...v0.1.0-alpha.19
 [v0.1.0-alpha.18]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.17...v0.1.0-alpha.18
