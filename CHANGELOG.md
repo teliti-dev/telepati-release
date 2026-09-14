@@ -19,6 +19,13 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.4.1] — 2026-09-14
+
+### Fixed
+- Frontend: perbaiki error TypeScript pada `ACSPage.tsx` (union type tidak konsisten di kartu roadmap ACS Advanced) yang membuat build v0.4.0 gagal di CI/CD. Tidak ada perubahan behavior — murni perbaikan build.
+
+---
+
 ## [v0.4.0] — 2026-09-14
 
 ### Added
@@ -441,7 +448,8 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
-[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.4.1...HEAD
+[v0.4.1]: https://github.com/teliti-dev/telepati-release/compare/v0.4.0...v0.4.1
 [v0.4.0]: https://github.com/teliti-dev/telepati-release/compare/v0.3.0...v0.4.0
 [v0.1.0-alpha.20]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.19...v0.1.0-alpha.20
 [v0.1.0-alpha.19]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.18...v0.1.0-alpha.19
