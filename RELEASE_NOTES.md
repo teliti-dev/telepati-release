@@ -1,8 +1,7 @@
 ## Apa yang Baru
 
-- **Dashboard DNS Redirect**: halaman DNS Redirect kini terhubung penuh ke API DNS Redirect (v0.4.0) — summary service & upstream, konfigurasi listener/cache/query-log, redirect rules (CRUD + enable/disable), query log, dan metrics. Sebelumnya halaman ini masih memakai konfigurasi Isolir sebagai sumber data.
-- **Dashboard Campaign Studio**: halaman Campaign kini benar-benar berfungsi — daftar campaign dengan filter, form create/edit lengkap (audience/placement/creative/schedule/frequency cap), lifecycle publish/pause/resume/archive, upload asset, dan analytics per-campaign. Sebelumnya halaman ini hanya menampilkan placeholder "campaign tracking belum diaktifkan".
-- **Dashboard ACS Advanced Management**: halaman baru untuk Presets, Provisions, Virtual Parameters, Files, Faults & Tasks (termasuk bulk operation ke banyak device sekaligus), Audit Log, dan Config — semuanya terhubung ke API ACS Advanced Management (v0.4.0). Presets/Provisions/Virtual Parameters/Config secara jelas ditandai di UI sebagai definisi + preview/validasi saja, belum diterapkan otomatis ke sesi CWMP perangkat.
+- **Dashboard Network Monitor**: status device infrastruktur (Mikrotik/OLT/RADIUS) sekarang real — online/offline, CPU load, uptime, dan kapan terakhir dicek, dari data `InfraDevice`. Worker proses sekarang otomatis mengecek ulang semua device setiap ~3 menit, jadi status tidak lagi basi menunggu klik "Cek Status" manual. Traffic jaringan, interface, dan log disconnect masih pratinjau data contoh, ditandai jelas "Segera Hadir" di UI.
+- **Dashboard Finance**: KPI "Uang Masuk" dan "Piutang Usaha", grafik arus kas (invoice yang dibayar per periode), dan umur piutang (aging invoice belum lunas) sekarang real dari data invoice pelanggan. Tabel "Invoice Mendekati Jatuh Tempo" menggantikan tabel kewajiban vendor fiktif. KPI Uang Keluar/Arus Kas Bersih/Saldo Tersedia serta grafik pengeluaran & anggaran ditandai "Segera" — Telepati belum punya modul pencatatan biaya operasional.
 
 ## Bug Fixes
 
@@ -26,7 +25,7 @@ curl -fsSL https://get.telepati.id/install.sh | sudo bash
 sudo telepati update
 ```
 
-Migration database berjalan otomatis saat service restart pasca-upgrade. Tidak ada migration baru pada release ini — hanya perubahan frontend, skema database sama seperti v0.4.0/v0.4.1.
+Migration database berjalan otomatis saat service restart pasca-upgrade. Tidak ada migration baru pada release ini — skema database sama seperti v0.5.0.
 
 ---
 

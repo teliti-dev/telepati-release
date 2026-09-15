@@ -19,6 +19,20 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.6.0] — 2026-09-15
+
+### Added
+- **Dashboard Network Monitor**: status device infrastruktur (Mikrotik/OLT/RADIUS) sekarang real — online/offline, CPU load, uptime, dan kapan terakhir dicek, dari data `InfraDevice`. Worker proses sekarang otomatis mengecek ulang semua device setiap ~3 menit (sebelumnya status hanya berubah kalau ada yang klik "Cek Status" manual). Traffic jaringan, interface, dan log disconnect masih pratinjau data contoh, ditandai jelas "Segera Hadir".
+- **Dashboard Finance**: KPI "Uang Masuk" dan "Piutang Usaha", grafik arus kas (invoice yang dibayar per periode), dan umur piutang (aging invoice belum lunas) sekarang real dari data invoice pelanggan. Tabel "Invoice Mendekati Jatuh Tempo" menggantikan tabel kewajiban vendor fiktif. KPI Uang Keluar/Arus Kas Bersih/Saldo Tersedia serta grafik pengeluaran & anggaran ditandai "Segera" — Telepati belum punya modul pencatatan biaya operasional.
+
+### Fixed
+
+### Changed
+
+### Removed
+
+---
+
 ## [v0.5.0] — 2026-09-15
 
 ### Added
@@ -463,7 +477,8 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
-[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.5.0...HEAD
+[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.6.0...HEAD
+[v0.6.0]: https://github.com/teliti-dev/telepati-release/compare/v0.5.0...v0.6.0
 [v0.5.0]: https://github.com/teliti-dev/telepati-release/compare/v0.4.1...v0.5.0
 [v0.4.1]: https://github.com/teliti-dev/telepati-release/compare/v0.4.0...v0.4.1
 [v0.4.0]: https://github.com/teliti-dev/telepati-release/compare/v0.3.0...v0.4.0
