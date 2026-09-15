@@ -19,6 +19,21 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.5.0] — 2026-09-15
+
+### Added
+- **Dashboard DNS Redirect**: halaman DNS Redirect sekarang terhubung penuh ke API v0.4.0 — summary service & upstream, konfigurasi listener/cache/query-log, redirect rules (CRUD + enable/disable), query log, dan metrics. Sebelumnya halaman ini memakai konfigurasi Isolir sebagai sumber data.
+- **Dashboard Campaign Studio**: halaman Campaign sekarang benar-benar berfungsi — daftar campaign, form create/edit (audience/placement/creative/schedule/frequency cap), lifecycle (publish/pause/resume/archive), upload asset, dan analytics. Sebelumnya halaman ini hanya menampilkan placeholder "campaign tracking belum diaktifkan".
+- **Dashboard ACS Advanced Management**: halaman baru untuk Presets, Provisions, Virtual Parameters, Files, Faults & Tasks (termasuk bulk operation ke banyak device), Audit Log, dan Config — semuanya terhubung ke API v0.4.0. Presets/Provisions/Virtual Parameters/Config secara jelas ditandai sebagai definisi + preview/validasi saja, belum diterapkan otomatis ke sesi CWMP.
+
+### Fixed
+
+### Changed
+
+### Removed
+
+---
+
 ## [v0.4.1] — 2026-09-14
 
 ### Fixed
@@ -448,7 +463,8 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
-[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.4.1...HEAD
+[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.5.0...HEAD
+[v0.5.0]: https://github.com/teliti-dev/telepati-release/compare/v0.4.1...v0.5.0
 [v0.4.1]: https://github.com/teliti-dev/telepati-release/compare/v0.4.0...v0.4.1
 [v0.4.0]: https://github.com/teliti-dev/telepati-release/compare/v0.3.0...v0.4.0
 [v0.1.0-alpha.20]: https://github.com/teliti-dev/telepati-release/compare/v0.1.0-alpha.19...v0.1.0-alpha.20
