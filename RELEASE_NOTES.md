@@ -4,7 +4,7 @@ Tidak ada fitur baru pada release ini — patch fix.
 
 ## Bug Fixes
 
-- **Dashboard Finance**: halaman Finance bisa terjebak loading tanpa henti dan berulang kali memanggil API ringkasan/pengeluaran (terlihat seperti serangan beruntun di access log, padahal itu satu tab browser yang memuat ulang data dengan sendirinya tanpa henti). Perbaikan ini menghentikan perilaku tersebut.
+- **Dashboard**: kartu perhatian "Koneksi pelanggan offline" di halaman utama sekarang mengarahkan ke filter yang benar di halaman Pelanggan (status koneksi PPPoE = offline). Sebelumnya salah mengarah ke filter status akun "Aktif", sehingga daftar yang tampil tidak sesuai dan filter offline terlihat tidak ada.
 
 ## Breaking Changes
 
@@ -24,9 +24,7 @@ curl -fsSL https://get.telepati.id/install.sh | sudo bash
 sudo telepati update
 ```
 
-Migration database berjalan otomatis saat service restart pasca-upgrade. Tidak ada migration baru pada release ini — skema database sama seperti v0.8.0.
-
-Kalau workspace Anda sempat mengalami masalah "loading terus" di halaman Finance pada v0.8.0, cukup upgrade ke versi ini — tidak perlu langkah tambahan lain.
+Migration database berjalan otomatis saat service restart pasca-upgrade. Tidak ada migration baru pada release ini — skema database sama seperti v0.8.1.
 
 ---
 

@@ -19,6 +19,13 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.8.2] — 2026-09-15
+
+### Fixed
+- **Dashboard**: kartu perhatian "Koneksi pelanggan offline" di halaman utama sekarang mengarahkan ke filter yang benar di halaman Pelanggan (status koneksi PPPoE = offline). Sebelumnya salah mengarah ke filter status akun "Aktif", sehingga daftar yang tampil tidak sesuai dan filter offline terlihat tidak ada.
+
+---
+
 ## [v0.8.1] — 2026-09-15
 
 ### Fixed
@@ -513,7 +520,8 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
-[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.8.1...HEAD
+[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.8.2...HEAD
+[v0.8.2]: https://github.com/teliti-dev/telepati-release/compare/v0.8.1...v0.8.2
 [v0.8.1]: https://github.com/teliti-dev/telepati-release/compare/v0.8.0...v0.8.1
 [v0.8.0]: https://github.com/teliti-dev/telepati-release/compare/v0.7.0...v0.8.0
 [v0.7.0]: https://github.com/teliti-dev/telepati-release/compare/v0.6.0...v0.7.0
