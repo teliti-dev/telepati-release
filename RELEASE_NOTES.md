@@ -1,6 +1,9 @@
 ## Apa yang Baru
 
-- **Dashboard Network Monitor**: kartu "Traffic seluruh jaringan", "Interface terpadat", dan "Disconnect terbaru" sekarang real, tidak lagi berupa pratinjau data contoh. Traffic jaringan dijumlahkan dari interface uplink yang dipilih admin (interface yang di-pin), atau interface tersibuk per device sebagai perkiraan kalau belum ada yang di-pin — kondisi ini ditandai jelas di kartu. Rentang traffic yang bisa dipilih dipersempit ke 30 menit/1 jam/2 jam mengikuti retensi data SNMP interface yang memang hanya 2 jam. Disconnect terbaru menampilkan sesi RADIUS yang baru berhenti beserta nama pelanggan; kolom alasan disconnect (mis. "Lost carrier") dihapus karena data itu memang tidak tersedia di sistem RADIUS.
+- **Modul Finance (kas & pengeluaran operasional)**: Telepati kini mencatat kas dan biaya operasional, bukan hanya piutang invoice pelanggan. Admin/accounting bisa mengelola banyak rekening kas/bank/e-wallet sekaligus (termasuk rekening penampungan dana payment gateway yang belum settlement), mencatat kategori & biaya operasional lewat alur draft → posting → void, melakukan transfer antar-rekening, serta menyusun anggaran bulanan per kategori beserta realisasinya.
+- Pembayaran invoice pelanggan sekarang memilih rekening kas tujuan dan otomatis tercatat ke ledger kas — saldo kas selalu sinkron dengan uang yang benar-benar diterima.
+- Lima widget dashboard Finance yang sebelumnya berstatus "Segera Hadir" (Uang Keluar, Komposisi Pengeluaran, Arus Kas Bersih, Saldo Tersedia, Realisasi Anggaran) sekarang menampilkan data nyata dari ledger kas.
+- Role `manager` mendapat akses lihat-saja (read-only) ke modul Finance; role `administrator` dan `accounting` mendapat akses penuh, termasuk mencatat pembayaran invoice.
 
 ## Bug Fixes
 
@@ -24,7 +27,7 @@ curl -fsSL https://get.telepati.id/install.sh | sudo bash
 sudo telepati update
 ```
 
-Migration database berjalan otomatis saat service restart pasca-upgrade. Tidak ada migration baru pada release ini — skema database sama seperti v0.6.0.
+Migration database berjalan otomatis saat service restart pasca-upgrade. Setiap workspace existing otomatis mendapat satu rekening kas kompatibilitas ("Kas belum teralokasi") — admin disarankan masuk ke menu Finance dan mengonfigurasi rekening kas nyata (nama, tipe, saldo awal, tanggal cutover) setelah upgrade.
 
 ---
 

@@ -19,6 +19,22 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.8.0] — 2026-09-15
+
+### Added
+- **Modul Finance (kas & pengeluaran operasional)**: Telepati kini mencatat kas dan biaya operasional, bukan hanya piutang invoice pelanggan. Admin/accounting bisa mengelola banyak rekening kas/bank/e-wallet sekaligus (termasuk rekening penampungan dana payment gateway yang belum settlement), mencatat kategori & biaya operasional lewat alur draft → posting → void, melakukan transfer antar-rekening, serta menyusun anggaran bulanan per kategori beserta realisasinya.
+- Pembayaran invoice pelanggan sekarang memilih rekening kas tujuan dan otomatis tercatat ke ledger kas — saldo kas selalu sinkron dengan uang yang benar-benar diterima.
+- Lima widget dashboard Finance yang sebelumnya berstatus "Segera Hadir" (Uang Keluar, Komposisi Pengeluaran, Arus Kas Bersih, Saldo Tersedia, Realisasi Anggaran) sekarang menampilkan data nyata dari ledger kas.
+- Role `manager` mendapat akses lihat-saja (read-only) ke modul Finance; role `administrator` dan `accounting` mendapat akses penuh, termasuk mencatat pembayaran invoice.
+
+### Fixed
+
+### Changed
+
+### Removed
+
+---
+
 ## [v0.7.0] — 2026-09-15
 
 ### Added
@@ -490,7 +506,8 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
-[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.7.0...HEAD
+[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.8.0...HEAD
+[v0.8.0]: https://github.com/teliti-dev/telepati-release/compare/v0.7.0...v0.8.0
 [v0.7.0]: https://github.com/teliti-dev/telepati-release/compare/v0.6.0...v0.7.0
 [v0.6.0]: https://github.com/teliti-dev/telepati-release/compare/v0.5.0...v0.6.0
 [v0.5.0]: https://github.com/teliti-dev/telepati-release/compare/v0.4.1...v0.5.0
