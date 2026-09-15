@@ -1,13 +1,10 @@
 ## Apa yang Baru
 
-- **Modul Finance (kas & pengeluaran operasional)**: Telepati kini mencatat kas dan biaya operasional, bukan hanya piutang invoice pelanggan. Admin/accounting bisa mengelola banyak rekening kas/bank/e-wallet sekaligus (termasuk rekening penampungan dana payment gateway yang belum settlement), mencatat kategori & biaya operasional lewat alur draft → posting → void, melakukan transfer antar-rekening, serta menyusun anggaran bulanan per kategori beserta realisasinya.
-- Pembayaran invoice pelanggan sekarang memilih rekening kas tujuan dan otomatis tercatat ke ledger kas — saldo kas selalu sinkron dengan uang yang benar-benar diterima.
-- Lima widget dashboard Finance yang sebelumnya berstatus "Segera Hadir" (Uang Keluar, Komposisi Pengeluaran, Arus Kas Bersih, Saldo Tersedia, Realisasi Anggaran) sekarang menampilkan data nyata dari ledger kas.
-- Role `manager` mendapat akses lihat-saja (read-only) ke modul Finance; role `administrator` dan `accounting` mendapat akses penuh, termasuk mencatat pembayaran invoice.
+Tidak ada fitur baru pada release ini — patch fix.
 
 ## Bug Fixes
 
-Tidak ada bug fix pada release ini.
+- **Dashboard Finance**: halaman Finance bisa terjebak loading tanpa henti dan berulang kali memanggil API ringkasan/pengeluaran (terlihat seperti serangan beruntun di access log, padahal itu satu tab browser yang memuat ulang data dengan sendirinya tanpa henti). Perbaikan ini menghentikan perilaku tersebut.
 
 ## Breaking Changes
 
@@ -27,7 +24,9 @@ curl -fsSL https://get.telepati.id/install.sh | sudo bash
 sudo telepati update
 ```
 
-Migration database berjalan otomatis saat service restart pasca-upgrade. Setiap workspace existing otomatis mendapat satu rekening kas kompatibilitas ("Kas belum teralokasi") — admin disarankan masuk ke menu Finance dan mengonfigurasi rekening kas nyata (nama, tipe, saldo awal, tanggal cutover) setelah upgrade.
+Migration database berjalan otomatis saat service restart pasca-upgrade. Tidak ada migration baru pada release ini — skema database sama seperti v0.8.0.
+
+Kalau workspace Anda sempat mengalami masalah "loading terus" di halaman Finance pada v0.8.0, cukup upgrade ke versi ini — tidak perlu langkah tambahan lain.
 
 ---
 

@@ -19,6 +19,13 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.8.1] — 2026-09-15
+
+### Fixed
+- **Dashboard Finance**: halaman Finance bisa terjebak loading tanpa henti dan berulang kali memanggil API ringkasan/pengeluaran (terlihat seperti serangan beruntun di access log, padahal itu satu tab browser yang memuat ulang data dengan sendirinya tanpa henti). Perbaikan ini menghentikan perilaku tersebut.
+
+---
+
 ## [v0.8.0] — 2026-09-15
 
 ### Added
@@ -506,7 +513,8 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
-[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.8.0...HEAD
+[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.8.1...HEAD
+[v0.8.1]: https://github.com/teliti-dev/telepati-release/compare/v0.8.0...v0.8.1
 [v0.8.0]: https://github.com/teliti-dev/telepati-release/compare/v0.7.0...v0.8.0
 [v0.7.0]: https://github.com/teliti-dev/telepati-release/compare/v0.6.0...v0.7.0
 [v0.6.0]: https://github.com/teliti-dev/telepati-release/compare/v0.5.0...v0.6.0
