@@ -1,7 +1,6 @@
 ## Apa yang Baru
 
-- **Dashboard Network Monitor**: status device infrastruktur (Mikrotik/OLT/RADIUS) sekarang real — online/offline, CPU load, uptime, dan kapan terakhir dicek, dari data `InfraDevice`. Worker proses sekarang otomatis mengecek ulang semua device setiap ~3 menit, jadi status tidak lagi basi menunggu klik "Cek Status" manual. Traffic jaringan, interface, dan log disconnect masih pratinjau data contoh, ditandai jelas "Segera Hadir" di UI.
-- **Dashboard Finance**: KPI "Uang Masuk" dan "Piutang Usaha", grafik arus kas (invoice yang dibayar per periode), dan umur piutang (aging invoice belum lunas) sekarang real dari data invoice pelanggan. Tabel "Invoice Mendekati Jatuh Tempo" menggantikan tabel kewajiban vendor fiktif. KPI Uang Keluar/Arus Kas Bersih/Saldo Tersedia serta grafik pengeluaran & anggaran ditandai "Segera" — Telepati belum punya modul pencatatan biaya operasional.
+- **Dashboard Network Monitor**: kartu "Traffic seluruh jaringan", "Interface terpadat", dan "Disconnect terbaru" sekarang real, tidak lagi berupa pratinjau data contoh. Traffic jaringan dijumlahkan dari interface uplink yang dipilih admin (interface yang di-pin), atau interface tersibuk per device sebagai perkiraan kalau belum ada yang di-pin — kondisi ini ditandai jelas di kartu. Rentang traffic yang bisa dipilih dipersempit ke 30 menit/1 jam/2 jam mengikuti retensi data SNMP interface yang memang hanya 2 jam. Disconnect terbaru menampilkan sesi RADIUS yang baru berhenti beserta nama pelanggan; kolom alasan disconnect (mis. "Lost carrier") dihapus karena data itu memang tidak tersedia di sistem RADIUS.
 
 ## Bug Fixes
 
@@ -25,7 +24,7 @@ curl -fsSL https://get.telepati.id/install.sh | sudo bash
 sudo telepati update
 ```
 
-Migration database berjalan otomatis saat service restart pasca-upgrade. Tidak ada migration baru pada release ini — skema database sama seperti v0.5.0.
+Migration database berjalan otomatis saat service restart pasca-upgrade. Tidak ada migration baru pada release ini — skema database sama seperti v0.6.0.
 
 ---
 

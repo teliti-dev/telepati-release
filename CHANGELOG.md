@@ -19,6 +19,19 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.7.0] — 2026-09-15
+
+### Added
+- **Dashboard Network Monitor**: kartu "Traffic seluruh jaringan", "Interface terpadat", dan "Disconnect terbaru" sekarang real, tidak lagi berupa pratinjau data contoh. Traffic jaringan dijumlahkan dari interface uplink yang dipilih admin (interface yang di-pin), atau interface tersibuk per device sebagai perkiraan kalau belum ada yang di-pin — kondisi ini ditandai jelas di kartu. Rentang traffic yang bisa dipilih dipersempit ke 30 menit/1 jam/2 jam mengikuti retensi data SNMP interface yang memang hanya 2 jam. Disconnect terbaru menampilkan sesi RADIUS yang baru berhenti beserta nama pelanggan; kolom alasan disconnect (mis. "Lost carrier") dihapus karena data itu memang tidak tersedia di sistem RADIUS.
+
+### Fixed
+
+### Changed
+
+### Removed
+
+---
+
 ## [v0.6.0] — 2026-09-15
 
 ### Added
@@ -477,7 +490,8 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
-[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.6.0...HEAD
+[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.7.0...HEAD
+[v0.7.0]: https://github.com/teliti-dev/telepati-release/compare/v0.6.0...v0.7.0
 [v0.6.0]: https://github.com/teliti-dev/telepati-release/compare/v0.5.0...v0.6.0
 [v0.5.0]: https://github.com/teliti-dev/telepati-release/compare/v0.4.1...v0.5.0
 [v0.4.1]: https://github.com/teliti-dev/telepati-release/compare/v0.4.0...v0.4.1
