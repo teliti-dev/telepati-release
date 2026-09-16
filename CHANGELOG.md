@@ -19,6 +19,15 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
+## [v0.9.0] — 2026-09-16
+
+### Added
+- **Device Detail — dashboard MikroTik RouterOS berbasis peran**: halaman detail perangkat sekarang mendeteksi otomatis peran perangkat (Router/Switch/OLT/Hybrid) dari model RouterOS, dengan opsi override manual oleh admin/teknisi yang tidak akan tertimpa oleh refresh metadata otomatis. Untuk perangkat Router, ringkasan operasional baru menampilkan status port fisik, WAN utama beserta traffic real-time, VLAN, IP address, PPPoE, DHCP, VPN, dan firewall — seluruhnya diambil langsung dari RouterOS API, tanpa pernah membocorkan username/password/secret.
+- **Tiket Dukungan**: pelanggan kini bisa membuka tiket dukungan langsung dari portal pelanggan (dikaitkan ke salah satu layanan/akun mereka), dan tim CS/agent bisa menangani antrean tiket tersebut lewat halaman Dukungan yang sudah ada di dashboard workspace — sebelumnya halaman ini hanya menampilkan data contoh (mock), sekarang sudah tersambung ke data sungguhan. Tiket yang sudah selesai otomatis dibuka kembali begitu pelanggan membalas, dan balasan pertama dari agent otomatis menandai tiket tersebut sebagai miliknya.
+- **Listener portal terpisah (opsional)**: operator sekarang bisa mengaktifkan port kedua (`PORTAL_PORT`) supaya hostname khusus pelanggan (mis. `support.<domain-isp>.com`) bisa diarahkan langsung ke portal pelanggan lewat Cloudflare Tunnel yang sudah ada, tanpa perlu aturan tambahan di domain dashboard utama. Fitur ini nonaktif secara default dan tidak mengubah perilaku instalasi yang sudah berjalan.
+
+---
+
 ## [v0.8.3] — 2026-09-16
 
 ### Changed
@@ -527,7 +536,8 @@ Versioning menggunakan [Semantic Versioning](https://semver.org/): `vMAJOR.MINOR
 
 ---
 
-[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.8.3...HEAD
+[Unreleased]: https://github.com/teliti-dev/telepati-release/compare/v0.9.0...HEAD
+[v0.9.0]: https://github.com/teliti-dev/telepati-release/compare/v0.8.3...v0.9.0
 [v0.8.3]: https://github.com/teliti-dev/telepati-release/compare/v0.8.2...v0.8.3
 [v0.8.2]: https://github.com/teliti-dev/telepati-release/compare/v0.8.1...v0.8.2
 [v0.8.1]: https://github.com/teliti-dev/telepati-release/compare/v0.8.0...v0.8.1
