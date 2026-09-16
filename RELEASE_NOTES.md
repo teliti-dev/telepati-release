@@ -1,10 +1,10 @@
 ## Apa yang Baru
 
-Tidak ada fitur baru pada release ini — patch fix.
+- **Branding**: favicon dan logo aplikasi (halaman login, kebijakan privasi, syarat & ketentuan) diperbarui ke mark Telepati yang baru — badge rounded-square dengan varian terang/gelap yang otomatis mengikuti tema browser/aplikasi.
 
 ## Bug Fixes
 
-- **Dashboard**: kartu perhatian "Koneksi pelanggan offline" di halaman utama sekarang mengarahkan ke filter yang benar di halaman Pelanggan (status koneksi PPPoE = offline). Sebelumnya salah mengarah ke filter status akun "Aktif", sehingga daftar yang tampil tidak sesuai dan filter offline terlihat tidak ada.
+Tidak ada bug fix pada release ini.
 
 ## Breaking Changes
 
@@ -24,7 +24,7 @@ curl -fsSL https://get.telepati.id/install.sh | sudo bash
 sudo telepati update
 ```
 
-Migration database berjalan otomatis saat service restart pasca-upgrade. Tidak ada migration baru pada release ini — skema database sama seperti v0.8.1.
+Migration database berjalan otomatis saat service restart pasca-upgrade. Tidak ada migration baru pada release ini — skema database sama seperti v0.8.2.
 
 ---
 
